@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="static/unpoly.css" />
+    <script src="static/unpoly.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+  </head>
+  <body>
+    <!-- HTML here may use Unpoly attributes like [up-follow] -->
+    <div up-href="front.html" id="records" class="card" up-target="#records" up-follow>  
+      Loom Records  
+      <div id="pp_count" class="count">
+      Papers 
+      {% for name, value in summary.pp_count.items() %}
+        <div id="pp_{{loop.index}}" class="num colour_{{loop.index}}">{{ value }}</div>
+      {% endfor %} 
+      </div>
+      <div id="st_count" class="count">
+      Statements 
+      {% for name, value in summary.st_count.items() %}
+        <div id="st_{{loop.index}}" class="num colour_{{loop.index}}">{{ value }}</div>
+      {% endfor %} 
+      </div>
+      <div id="au_count" class="count">
+      Authors 
+      {% for name, value in summary.au_count.items() %}
+        <div id="au_{{loop.index}}" class="num colour_{{loop.index}}">{{ value }}</div>
+      {% endfor %} 
+      </div>
+    </div>
+    <div up-href="front.html" id="data" class="card" up-target="#data" up-follow>
+      Data and Code 
+      <div id="csv_count" class="count">
+      CSV data files
+      {% for name, value in summary.csv_count.items() %}
+        <div id="csv_{{loop.index}}" class="num colour_{{loop.index}}">{{ value }}</div>
+      {% endfor %} 
+      </div>
+     <div id="py_count" class="count">
+      Python files
+      {% for name, value in summary.lang_count.items() %}
+        <div id="py_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["Python"] }}</div>
+      {% endfor %} 
+      </div>
+      <div id="r_count" class="count">
+      R files
+      {% for name, value in summary.lang_count.items() %}
+        <div id="r_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["R"] }}</div>
+      {% endfor %} 
+      </div>
+    </div>
+    <div up-href="front.html" id="methods" class="card" up-target="#methods" up-follow> 
+      Data Types Applied
+      <div id="dp_count" class="count">
+      Data Preprocessing
+      {% for name, value in summary.method_count.items() %}
+        <div id="dp_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["dp"] }}</div>
+      {% endfor %} 
+      </div>
+      <div id="ds_count" class="count">
+      Descriptive Statistics
+      {% for name, value in summary.method_count.items() %}
+        <div id="ds_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["ds"] }}</div>
+      {% endfor %} 
+      </div>
+      <div id="ae_count" class="count">
+      Algorithm Evaluation
+      {% for name, value in summary.method_count.items() %}
+        <div id="ae_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["ae"] }}</div>
+      {% endfor %} 
+      </div>
+      <div id="ma_count" class="count">
+      Multilevel Analysis
+      {% for name, value in summary.method_count.items() %}
+        <div id="ma_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["ma"] }}</div>
+      {% endfor %} 
+      </div>
+      <div id="ca_count" class="count">
+      Correlation Analysis
+      {% for name, value in summary.method_count.items() %}
+        <div id="ca_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["ca"] }}</div>
+      {% endfor %} 
+      </div>      
+      <div id="gc_count" class="count">
+      Group Comparison
+      {% for name, value in summary.method_count.items() %}
+        <div id="gc_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["gc"] }}</div>
+      {% endfor %} 
+      </div>
+      <div id="ra_count" class="count">
+      Regression Analysis
+      {% for name, value in summary.method_count.items() %}
+        <div id="ra_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["ra"] }}</div>
+      {% endfor %} 
+      </div>
+      <div id="cp_count" class="count">
+      Class Prediction
+      {% for name, value in summary.method_count.items() %}
+        <div id="cp_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["cp"] }}</div>
+      {% endfor %} 
+      </div>
+      <div id="cd_count" class="count">
+      Class Discovery
+      {% for name, value in summary.method_count.items() %}
+        <div id="cd_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["cd"] }}</div>
+      {% endfor %} 
+      </div>
+      <div id="fa_count" class="count">
+      Factor Analysis
+      {% for name, value in summary.method_count.items() %}
+        <div id="fa_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["fa"] }}</div>
+      {% endfor %} 
+      </div>
+    </div>
+  </body>
+</html>

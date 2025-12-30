@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="static/unpoly.css" />
+    <link rel="stylesheet" href="static/style.css">
+    <meta charset="utf-8">
+    <script src="static/unpoly.js"></script>
+    <script src="static/useFunctions.js"></script>
+  </head>
+  <body>
+    <div id="title" class="header">
+    <h1>LOOM DASHBOARD</h2>
+    </div>
+    <div id="main" class="flex-container">
+      <div id="fields">
+      {% from 'field_button.html' import field_name %}
+      {% for name in summary.all_field_names %}
+        {{ field_name(name, loop.index) }}
+      {% endfor %}
+      </div>
+      <div id="flipcards">
+        <div id="two_cards">
+          <div id="records" up-defer="insert" up-href="back.html"> ... </div>
+          <div id="data" up-defer="insert" up-href="back.html"> ... </div>
+        </div>  
+        <div id="methods" up-defer="insert" up-href="back.html"> ... </div>
+      </div>
+    </div>
+    <div id="contacts">
+    <h3>Contact us blahblah</h3>
+    </div>
+    <!-- HTML here may use Unpoly attributes like [up-follow] -->
+  </body>
+</html>

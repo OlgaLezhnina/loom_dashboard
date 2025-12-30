@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="static/unpoly.css" />
+    <link rel="stylesheet" href="static/style.css">
+    <meta charset="utf-8">
+    <script src="static/unpoly.js"></script>
+    <script src="static/useFunctions.js"></script>
+  </head>
+  <body>
+    <div id="title_fin" class="header">
+    <h1>Downloadable Info</h2>
+    </div>
+    <div id="main_fin" class="flex-container">
+      <div id="fields_fin">
+      {% from 'field_button.html' import field_name %}
+      {% for name in summary.all_field_names %}
+        {% if name != "Overall" %}
+        {{ field_name(name, loop.index) }}
+        {% endif %}       
+        <div class="info_field">
+          {% for line in summary.final_info[name] %}
+          <div class="info_line">
+            <div class="record_name">
+              {{ line[0] }}       
+            </div>
+            <div class="about">
+              <div class="paper_doi">
+              {% for doi in line[2] %}
+               <a href={{ doi }} target="_blank">paper doi</a>
+              {% endfor %}  
+              </div>
+              <div class="schemata">
+              {% for schema in line[1] %}
+               {{ schema }}
+              {% endfor %}      
+              </div>             
+              <div class="code_files">
+              {% for key, value in line[3].items() %}
+               <a href={{ value }} target="_blank">{{ key }}</a> 
+               {% endfor %} 
+              </div>
+              <div class="data_files">
+              {% for key, value in line[4].items() %}
+                <a href={{ value }} target="_blank">{{ key }}</a> 
+              {% endfor %} 
+              </div>
+            </div>
+          </div>
+          {% endfor %}        
+        </div>
+      {% endfor %}
+      </div>
+      {{ summary.final_info }}
+    </div>
+  </body>
+</html>

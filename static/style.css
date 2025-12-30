@@ -1,0 +1,187 @@
+* {
+  font:
+    16px"Open Sans",
+    sans-serif;
+}
+
+#title {
+text-align: center;
+padding: 10px;
+}
+div.flex-container {
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+div.flex-container > div {
+  margin: 10px;
+}
+
+/* Use media query and show the flex items vertically if screen width is less than 600px */
+@media screen and (max-width:600px) {
+  div.flex-container {
+    flex-direction: column;
+  }
+}
+
+div.field_box{
+  margin: 3px;
+}
+
+/*  big div with all three cards*/
+#flipcards {
+  display:inline-flex;
+  width: min-content;
+  flex-direction: row;
+  padding: 10px;
+}
+
+/*  all divs inside this big div. But do NOT extract common denominator, esp flex!*/
+#flipcards div {  
+  text-align: center;
+}
+
+div.two_cards {
+  display:inline-flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+div.card {
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px; 
+  font-size: 20px;
+  padding: 10px;    
+}
+
+div.count {
+  display:flex;
+  flex-direction: row;
+  font-size: 15px;
+  padding: 10px;  
+}
+
+div.num {
+  display:flex;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-right: 2px;
+  font-size: 15px;  
+}
+
+#fields {
+  display:flex;
+  /*  flex: 50%;*/
+  flex-direction: row;
+  flex-wrap: wrap;  
+}
+/* Field button */
+.button {
+  position: relative;
+  right: 20px;
+  z-index: -1;
+  display: inline-block;
+  height: 27px; /* was 34 */
+  padding-right: 6px;
+  padding-left: 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  border-radius: 10px;
+  vertical-align: middle;
+  line-height: 27px;
+}
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 27px; /* was 34 */
+  vertical-align: middle;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px; /* was 26 */
+  width: 24px; /* was 26 */
+  border-radius: 10px;
+  left: 4px;
+  bottom: 6px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #7d827d;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+#contacts {
+text-align: center;
+}
+
+
+
+div.fields_fin {
+display:inline-flex;
+flex-direction: column;
+}
+div.info_field {
+  display:inline-flex;
+  flex-direction: column;
+  margin: 10px;
+  border: 2px solid black;
+}
+div.info_line {
+  display:inline-flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 2px solid black;
+}
+
+div.about {
+  display:inline-flex;
+  flex:50%;
+  flex-direction: row;
+  padding: 10px;
+  border: 2px solid black;
+}
