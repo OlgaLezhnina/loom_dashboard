@@ -568,3 +568,16 @@ x % 100
 
 wtf = {'@id': 'https://doi.org/10.1098/rspb.2023.2501'}
 wtf["@id"]
+
+li = ['ds', 'ma', 'gc', 'fa']
+dct = {"dp": "Data Preprocessing",
+       "ds": "Descriptive Statistics",
+       "ae": "Algorithm Evaluation",
+       "ma": "Multilevel Analysis",
+       "ca": "Correlation Analysis",
+       "gc": "Group Cmparison",
+       "ra": "Regression Analysis",
+       "cp": "Class Prediction",
+       "cd": "Class Discovery",
+       "fa": "Factor Analysis"}
+new_names = [dct.get(name, name) for name in li]

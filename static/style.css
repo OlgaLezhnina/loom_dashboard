@@ -13,6 +13,7 @@ div.flex-container {
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
+  text-align: center;
 }
 
 div.flex-container > div {
@@ -28,6 +29,20 @@ div.flex-container > div {
 
 div.field_box{
   margin: 3px;
+}
+
+div.quasibutton {
+flex:0 0 100%;
+/*min-width:90%;*/ 
+border: 2px solid black;
+border-radius: 10px;
+margin-top: 10px;
+margin-bottom: 10px;
+margin-right: 10px; 
+font-size: 20px;
+padding: 10px;
+text-align: center;
+font:30px;  
 }
 
 /*  big div with all three cards*/
@@ -50,6 +65,7 @@ div.two_cards {
 }
 
 div.card {
+  min-width:45%; 
   border: 2px solid black;
   border-radius: 10px;
   margin-top: 10px;
@@ -156,15 +172,21 @@ input:checked + .slider:before {
 }
 
 #contacts {
-text-align: center;
+  text-align: center;
 }
-
-
 
 div.fields_fin {
-display:inline-flex;
-flex-direction: column;
+  display:inline-flex;
+  flex-direction: column;
 }
+
+div.field_wrap{
+  margin: 10px;
+  border: 2px solid black;
+} 
+
+#more {display: none;}
+
 div.info_field {
   display:inline-flex;
   flex-direction: column;
@@ -175,6 +197,7 @@ div.info_line {
   display:inline-flex;
   flex-direction: column;
   padding: 10px;
+  margin: 10px;
   border: 2px solid black;
 }
 
@@ -182,6 +205,29 @@ div.about {
   display:inline-flex;
   flex:50%;
   flex-direction: row;
+  padding: 10px;  
+}
+
+div.paper_doi{
+  border: 1px solid black;
   padding: 10px;
-  border: 2px solid black;
+  margin-right: 10px;
+}
+
+div.schemata{
+  border: 1px solid black;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+div.code_files{
+  border: 1px solid black;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+div.data_files{
+  border: 1px solid black;
+  padding: 10px;
+  margin-right: 10px;
 }

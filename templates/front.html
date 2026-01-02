@@ -7,8 +7,26 @@
     <script src="https://d3js.org/d3.v4.js"></script>
   </head>
   <body>    
-    <div up-href="back.html" id="records" up-target="#records" up-follow> records </div>
-    <div up-href="back.html" id="data" up-target="#data" up-follow> data </div>
-    <div up-href="back.html" id="methods" up-target="#methods" up-follow> methods </div>
+    <div up-href="back.html" id="records" class="card" up-target="#records" up-follow> 
+    <p> Loom Records </p> 
+    </div>
+    <div up-href="back.html" id="data" class="card" up-target="#data" up-follow> 
+     <p> Data and Code </p>
+    </div>
+    <div up-href="back.html" id="methods" class="card" up-target="#methods" up-follow> 
+    <p> Schemata </p> 
+    This section shows research field-specific statistics of schemata used in 
+    Loom records/research papers. Shemata are registered and persistently identified data types
+    used to structure data analysis results. This figure presents selecting a schema to report 
+    a statistical or machine learning method, 
+    <a up-layer="new modal" up-content="#abc" up-size="grow">
+    <template id="abc">
+    <img src="/static/schemata.png" style="width:90%;height:90%;">
+    </template>
+    click the link to see a fancy pic
+    </a>
+    To know more about the schemata,      
+    visit the <a href="https://knowledgeloom.tib.eu/pages/help" target="_blank">Loom help page</a>.
+    </div>
   </body>
 </html>

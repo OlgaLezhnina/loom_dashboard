@@ -8,6 +8,7 @@ app = Flask(__name__, template_folder='templates')
 
 
 @app.route("/")
+@app.route("/main_page.html")
 def main():
     return render_template('main_page.html', mimetype='text/html', summary=summary)
 

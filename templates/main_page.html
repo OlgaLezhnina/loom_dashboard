@@ -18,13 +18,18 @@
         {{ field_name(name, loop.index) }}
       {% endfor %}
       </div>
-      <div id="flipcards">
+      <div id="overview">
+      <div id="flipper" class="quasibutton">
+      <a href="final_info.html" up-target="#overview">Final_info</a>
+      </div>
+      <div id="flipcards">        
         <div id="two_cards">
           <div id="records" up-defer="insert" up-href="back.html"> ... </div>
           <div id="data" up-defer="insert" up-href="back.html"> ... </div>
         </div>  
         <div id="methods" up-defer="insert" up-href="back.html"> ... </div>
       </div>
+    </div>
     </div>
     <div id="contacts">
     <h3>Contact us blahblah</h3>

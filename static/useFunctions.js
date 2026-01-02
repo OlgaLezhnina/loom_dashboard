@@ -1,4 +1,4 @@
-up.compiler('#records, #data, #methods', function(element, data, meta) {
+up.compiler('#records, #data, #methods, #overview', function(element, data, meta) {
   checkButtons();
   assignColours();
 })
@@ -18,7 +18,7 @@ function checkButtons() {
 function selectField(index) {
   var button = document.getElementById("field_name_" + index);
   if (!button) return undefined;
-  const prefixes = ["pp_", "st_", "au_", "py_", "r_", "csv_", 
+  const prefixes = ["pp_", "st_", "au_", "py_", "r_", "csv_", "fin_",
                     "dp_", "ds_", "ae_", "ma_", "ca_", "gc_", "ra_", "cp_", "cd_", "fa_"];
   for (const prefix of prefixes) {
       var x = document.getElementById(prefix + index);
@@ -49,3 +49,4 @@ function assignColours() {
     counter++; 
   }
 } 
+

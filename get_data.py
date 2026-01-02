@@ -264,9 +264,20 @@ class Summary():
 
     def collect_url_info(self):
         final_dict = {x: [] for x in self.all_field_names}
+        schemata_dct = {"dp": "Data Preprocessing",
+                        "ds": "Descriptive Statistics",
+                        "ae": "Algorithm Evaluation",
+                        "ma": "Multilevel Analysis",
+                        "ca": "Correlation Analysis",
+                        "gc": "Group Cmparison",
+                        "ra": "Regression Analysis",
+                        "cp": "Class Prediction",
+                        "cd": "Class Discovery",
+                        "fa": "Factor Analysis"}
         for paper in self.papers.values():
             methods_count = paper.count_methods()
-            methods_list = [key for key, value in methods_count.items() if value >= 1]
+            methods_list_abbreviated = [key for key, value in methods_count.items() if value >= 1]
+            methods_list = [schemata_dct.get(name, name) for name in methods_list_abbreviated]
             paper_info = [paper.get_record_name(),
                           methods_list,
                           paper.get_publication_url(),
