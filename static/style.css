@@ -4,10 +4,34 @@
     sans-serif;
 }
 
+@font-face {
+  font-family: Overload Burn;
+  src: url(/static/overload.burn-regular.otf);
+}
+
+body::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: -50vw;
+  left: -50vh;
+  width: calc(100vw + 100vh);
+  min-height: calc(100vw + 100vh);
+  background-image: url("grid.png");
+  z-index: -1;
+  opacity: 0.5;
+  /*rotate: 30deg;*/
+}
+
 #title {
 text-align: center;
+font: 60px"Overload Burn";
+color: #454a52; 
+text-shadow: 2px 2px 8px darkgrey;
 padding: 10px;
 }
+
 div.flex-container {
   display: inline-flex;
   flex-direction: column;
@@ -16,36 +40,26 @@ div.flex-container {
   text-align: center;
 }
 
-div.flex-container > div {
-  margin: 10px;
-}
-
-/* Use media query and show the flex items vertically if screen width is less than 600px */
-@media screen and (max-width:600px) {
-  div.flex-container {
-    flex-direction: column;
-  }
-}
 
 div.field_box{
-  margin: 3px;
+  margin: 5px;
 }
 
 div.quasibutton {
-flex:0 0 100%;
-/*min-width:90%;*/ 
-border: 2px solid black;
-border-radius: 10px;
-margin-top: 10px;
-margin-bottom: 10px;
-margin-right: 10px; 
-font-size: 20px;
-padding: 10px;
-text-align: center;
-font:30px;  
+  flex:0 0 100%;
+  /*min-width:90%;*/ 
+  background-color: #ccc; 
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px; 
+  padding: 10px;
+  text-align: center;
+  font:30px;
+  box-shadow: 5px 5px 2px darkgrey;    
 }
 
-/*  big div with all three cards*/
 #flipcards {
   display:inline-flex;
   width: min-content;
@@ -53,27 +67,37 @@ font:30px;
   padding: 10px;
 }
 
-/*  all divs inside this big div. But do NOT extract common denominator, esp flex!*/
-#flipcards div {  
-  text-align: center;
+/* Use media query and show the flex items vertically if screen width is less than 600px */
+@media screen and (max-width:600px) {
+  #flipcards {
+    flex-direction: column;
+  }
 }
 
 div.two_cards {
   display:inline-flex;
   flex-direction: column;
-  padding: 10px;
 }
 
 div.card {
-  min-width:45%; 
-  border: 2px solid black;
+  min-width:30vw;
+  background-color: #ccc; 
+  border: 1px solid black;
   border-radius: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-right: 10px; 
-  font-size: 20px;
-  padding: 10px;    
+  padding: 10px;
+  box-shadow: 5px 5px 2px darkgrey;    
 }
+
+/*div.card::after {
+    content: url("arrow.png");
+    position: relative;
+    bottom: 0;
+    right: 0;
+    opacity: 0.5;
+}*/
 
 div.count {
   display:flex;
@@ -95,7 +119,6 @@ div.num {
 
 #fields {
   display:flex;
-  /*  flex: 50%;*/
   flex-direction: row;
   flex-wrap: wrap;  
 }
@@ -175,14 +198,22 @@ input:checked + .slider:before {
   text-align: center;
 }
 
-div.fields_fin {
+div.legend{
   display:inline-flex;
-  flex-direction: column;
-}
+  text-align: center;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 3px;
+} 
 
 div.field_wrap{
-  margin: 10px;
-  border: 2px solid black;
+  display:inline-flex;
+  /*width: min-content;*/
+  background-color: #ccc; 
+  margin-bottom: 30px;
+  border: 1px solid black;
+  border-radius: 10px;
 } 
 
 #more {display: none;}
@@ -190,44 +221,30 @@ div.field_wrap{
 div.info_field {
   display:inline-flex;
   flex-direction: column;
-  margin: 10px;
-  border: 2px solid black;
+  margin: 5px;
 }
 div.info_line {
   display:inline-flex;
-  flex-direction: column;
-  padding: 10px;
-  margin: 10px;
-  border: 2px solid black;
-}
-
-div.about {
-  display:inline-flex;
-  flex:50%;
   flex-direction: row;
-  padding: 10px;  
-}
-
-div.paper_doi{
   border: 1px solid black;
-  padding: 10px;
-  margin-right: 10px;
+  border-radius: 10px;
+  padding: 2px;
+  margin: 5px;
+}
+div.record_paper{
+  padding: 5px;
 }
 
 div.schemata{
   border: 1px solid black;
-  padding: 10px;
-  margin-right: 10px;
+  border-radius: 10px;
+  padding: 1px;
 }
-
 div.code_files{
-  border: 1px solid black;
-  padding: 10px;
-  margin-right: 10px;
+  flex-wrap: nowrap;
+  padding: 5px;
 }
 
 div.data_files{
-  border: 1px solid black;
-  padding: 10px;
-  margin-right: 10px;
+ padding: 5px;
 }

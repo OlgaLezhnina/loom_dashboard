@@ -10,77 +10,85 @@
   <body>
     <div id="overview">
       <div id="flipper" class="quasibutton">
-        <a href="main_page.html" up-target="#overview">Back to stuff</a>
+        This is interactive presentation of the TIB Knowledge Loom records. 
+        Select specific domains to get detailed information on the records:
+        (i) the record title, (ii) the related research paper DOI,
+        (iii) schemata used in the record, (iv) data files 
+        and (v) code files. The files can be downloaded.
+        <p><a href="main_page.html" up-target="#overview">Back to Overview</a></p>
       </div>
       <div id="main_fin" class="flex-container">
-        <div id="fields_fin">
-          {% for name in summary.all_field_names %}
+        {% for name in summary.all_field_names %}
             {% if name != "Overall" %}
-              <div id="fin_{{loop.index}}" class="field_wrap colour_{{loop.index}}">
-                <h3>{{ name }}</h3>
+              <div id="fin_{{loop.index}}" class="field_wrap">
+                <div class="legend colour_{{loop.index}}">{{ name }}</div>
                 <div class="info_field">
                   {% for line in summary.final_info[name] %}
-                    {% if loop.index ==3 %}
+                    {% if loop.index ==2 %}
                       <details>
-                      <summary>more papers</summary>
+                      <summary>more records</summary>
                     {% endif %} 
                   <div class="info_line">
-                    <div class="record_name">
-                      {{ line[0] }}       
-                    </div>
-                    <div class="about">
-                      <div class="paper_doi">
+                    <div class="record_paper">
+                        {{ line[0] }}       
                         {% for doi in line[2] %}
-                          <a href={{ doi }} target="_blank">DOI</a>
+                        <a href={{ doi }} target="_blank">(paper)</a>
                         {% endfor %}  
-                      </div>
-                      <div class="schemata">
-                        {% for schema in line[1] %}
-                          {% if loop.index ==2 %}
-                            <details>
-                            <summary>more schemata</summary>
-                          {% endif %} 
-                          <p>{{ schema }}</p>
-                        {% endfor %}
-                        {% if line[1]|length > 1 %}
-                          </details>
-                        {% endif %}       
-                      </div>             
-                      <div class="code_files">
-                        {% for key, value in line[3].items() %}
-                          {% if loop.index ==4 %}
-                            <details>
-                            <summary>more files</summary>
-                          {% endif %} 
-                          <a href={{ value }} target="_blank">{{ key }}</a>
-                        {% endfor %}
-                        {% if line[3].items()|length > 3 %}
-                          </details>
+                    </div>         
+                    <div class="schemata">
+                      {% for schema in line[1] %}
+                        {% if loop.index ==2 %}
+                          <details>
+                          <summary>more schemata</summary>
                         {% endif %} 
-                      </div>
-                      <div class="data_files">
-                        {% for key, value in line[4].items() %}
-                          {% if loop.index ==4 %}
-                            <details>
-                            <summary>more files</summary>
-                          {% endif %} 
-                          <a href={{ value }} target="_blank">{{ key }}</a>
-                        {% endfor %}
-                        {% if line[4].items()|length > 3 %}
-                          </details>
+                          {{ schema }}
+                      {% endfor %}
+                      {% if line[1]|length > 1 %}
+                        </details>
+                      {% endif %}       
+                    </div>          
+                    <div class="data_files">
+                      Data:
+                      {% if not line[4].items() %}
+                        see the paper
+                      {% endif %} 
+                      {% for key, value in line[4].items() %}
+                        {% if loop.index ==4 %}
+                          <details>
+                          <summary>more files</summary>
+                        {% endif %}
+                        <a href={{ value }} target="_blank">{{ key }}</a>
+                      {% endfor %}
+                      {% if line[4].items()|length > 3 %}
+                        </details>
+                      {% endif %} 
+                    </div>
+                    <div class="code_files">
+                      Code:
+                      {% if not line[3].items() %}
+                        see the paper
+                      {% endif %} 
+                      {% for key, value in line[3].items() %}
+                        {% if loop.index ==4 %}
+                          <details>
+                          <summary>more files</summary>
                         {% endif %} 
-                      </div>
+                        <a href={{ value }} target="_blank">{{ key }}</a>
+                      {% endfor %}
+                      {% if line[3].items()|length > 3 %}
+                        </details>
+                      {% endif %} 
                     </div>
                   </div>
                   {% endfor %}        
-                  {% if summary.final_info[name]|length > 2 %}
+                  {% if summary.final_info[name]|length > 1 %}
                     </details>
                   {% endif %}   
                 </div>
               </div>
             {% endif %}   
           {% endfor %}
-        </div>
+        
       </div>
     </div>
   </body>

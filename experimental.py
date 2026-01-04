@@ -32,8 +32,12 @@ def find_papers(folders):
     return papers
 
 
-papers = find_papers()
-len(papers)
+papers2 = find_papers(folders_3)
+ro_resource = next(
+    (dct for dct in papers2["ceballos-2023-1"] if dct["name"] == "ro-crate-metadata.json"),
+    None)
+if ro_resource is None:
+    print("wow")
 
 
 def find_methods(papers):

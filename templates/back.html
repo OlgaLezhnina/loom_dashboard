@@ -27,11 +27,7 @@
          <div id="st_{{loop.index}}" class="num colour_{{loop.index}}">{{ value }}</div>
        {% endfor %} 
        </div>
-    <p>This section shows domain-specific statistics of Loom records 
-    based on research papers: the number of papers, authors, and statements. 
-    A statement is a natural language formulation of data analysis results. 
-    To find out more on this topic or to look for specific information, 
-    visit the <a href="https://knowledgeloom.tib.eu/" target="_blank">Loom Search</a> page.</p>
+    Flip the card
     </div>
     <div up-href="front.html" id="data" class="card" up-target="#data" up-follow>
       Data and Code 
@@ -53,9 +49,7 @@
         <div id="r_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["R"] }}</div>
       {% endfor %} 
       </div>
-    <p>This section shows domain-specific statistics of data and code files currently 
-    available as supplementary materials to Loom records/research papers.
-    They can be accessed via Summary and Downloads. </p>
+    Flip the card
     </div>
     <div up-href="front.html" id="methods" class="card" up-target="#methods" up-follow> 
       Schemata
@@ -119,6 +113,7 @@
         <div id="fa_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["fa"] }}</div>
       {% endfor %} 
       </div>
+    <span style="font-family:Overload Burn; font-size:16px">Flip the card </span>
     </div>
   </body>
 </html>

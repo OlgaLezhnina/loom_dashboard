@@ -5,6 +5,7 @@ import requests
 # from .timing import Timer, timing
 # TODO throw away papers without ABOUT (field) or call then unspecified?
 # TODO typos in fields?
+# TODO mention font ppl in Readme https://www.1001fonts.com/overload-font.html
 
 
 class Paper(Hashable):
@@ -144,8 +145,13 @@ def find_papers():
         else:
             paper = Paper()
             paper.resources = folder["resources"]
-            paper.folder_name = folder_name
-            papers[folder_name] = paper
+            # TODO MIKE
+            ro_resource = next(
+                (dct for dct in paper.resources if dct["name"] == "ro-crate-metadata.json"),
+                None)
+            if ro_resource is not None:
+                paper.folder_name = folder_name
+                papers[folder_name] = paper
     return papers
 
 
@@ -269,7 +275,7 @@ class Summary():
                         "ae": "Algorithm Evaluation",
                         "ma": "Multilevel Analysis",
                         "ca": "Correlation Analysis",
-                        "gc": "Group Cmparison",
+                        "gc": "Group Comparison",
                         "ra": "Regression Analysis",
                         "cp": "Class Prediction",
                         "cd": "Class Discovery",
