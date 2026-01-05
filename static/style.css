@@ -24,6 +24,11 @@ body::before {
   /*rotate: 30deg;*/
 }
 
+img {
+  width: 100%;
+  height: auto;
+}
+
 #title {
 text-align: center;
 font: 70px"Barlow ExtraBold";
