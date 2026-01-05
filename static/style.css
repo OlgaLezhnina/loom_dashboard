@@ -1,12 +1,17 @@
 * {
   font:
-    16px"Open Sans",
+    16px "Open Sans",
     sans-serif;
 }
 
 @font-face {
   font-family: Overload Burn;
   src: url(/static/overload.burn-regular.otf);
+}
+
+@font-face {
+  font-family: Barlow ExtraBold;
+  src: url(/static/barlow.extrabold.ttf);
 }
 
 body::before {
@@ -26,10 +31,13 @@ body::before {
 
 #title {
 text-align: center;
-font: 60px"Overload Burn";
+font: 70px"Barlow ExtraBold";
+letter-spacing: 8px;
+word-spacing: 20px;
 color: #454a52; 
-text-shadow: 2px 2px 8px darkgrey;
+text-shadow: 4px 4px 8px #5a5b63;
 padding: 10px;
+margin: 20px;
 }
 
 div.flex-container {
@@ -45,19 +53,19 @@ div.field_box{
   margin: 5px;
 }
 
-div.quasibutton {
-  flex:0 0 100%;
-  /*min-width:90%;*/ 
-  background-color: #ccc; 
-  border: 1px solid black;
+div.explanation {
+  display:inline-block;
+  /* flex:0 0 100%;*/
+  width:50vw; 
+  background-color: #E3E5E6; 
   border-radius: 10px;
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   margin-right: 10px; 
   padding: 10px;
-  text-align: center;
+  text-align: left;
   font:30px;
-  box-shadow: 5px 5px 2px darkgrey;    
+  box-shadow: 5px 5px 2px #5a5b63;    
 }
 
 #flipcards {
@@ -81,14 +89,19 @@ div.two_cards {
 
 div.card {
   min-width:30vw;
-  background-color: #ccc; 
-  border: 1px solid black;
+  background-color: #E3E5E6; 
   border-radius: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-right: 10px; 
   padding: 10px;
-  box-shadow: 5px 5px 2px darkgrey;    
+  box-shadow: 5px 5px 2px #5a5b63;    
+}
+
+#schemata_pic {
+  display:block;
+  width:100%;
+  text-align: center;
 }
 
 /*div.card::after {
@@ -106,11 +119,37 @@ div.count {
   padding: 10px;  
 }
 
+div.card_name {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 8px; 
+}
+
+div.flip {
+  font-size:18px;
+  font-weight: bold;
+  text-decoration: underline dotted;
+  margin: 10px;
+}
+div.sch_name {
+  width: 20ch;
+  text-align: left;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+div.row_name {
+  width: 15ch;
+  text-align: left;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
 div.num {
   display:flex;
+  width: 3ch;
   border-radius: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
   padding-top: 8px;
   padding-bottom: 8px;
   margin-right: 2px;
@@ -199,9 +238,7 @@ input:checked + .slider:before {
 }
 
 div.legend{
-  display:inline-flex;
-  text-align: center;
-  font-weight: bold;
+  font-size: 18px;
   border-radius: 10px;
   padding: 5px;
   margin: 3px;
@@ -209,11 +246,13 @@ div.legend{
 
 div.field_wrap{
   display:inline-flex;
-  /*width: min-content;*/
-  background-color: #ccc; 
+  text-align: left;
+  width: 90vw;
+  flex-direction: column;
+  background-color: #E3E5E6; 
   margin-bottom: 30px;
-  border: 1px solid black;
   border-radius: 10px;
+  box-shadow: 5px 5px 2px #5a5b63; 
 } 
 
 #more {display: none;}
@@ -221,30 +260,32 @@ div.field_wrap{
 div.info_field {
   display:inline-flex;
   flex-direction: column;
+  width: 100%;
   margin: 5px;
 }
 div.info_line {
   display:inline-flex;
   flex-direction: row;
-  border: 1px solid black;
-  border-radius: 10px;
-  padding: 2px;
+  width: 100%;
   margin: 5px;
 }
 div.record_paper{
-  padding: 5px;
+  width: 55%;
+  font-style: italic;
+  margin: 5px;
 }
 
-div.schemata{
-  border: 1px solid black;
-  border-radius: 10px;
-  padding: 1px;
-}
 div.code_files{
-  flex-wrap: nowrap;
-  padding: 5px;
+  width: 15%;
+  margin: 5px;
 }
 
 div.data_files{
- padding: 5px;
+ width: 15%;
+ margin: 5px;
+}
+
+div.schemata{
+  width: 15%;
+  margin: 5px;
 }

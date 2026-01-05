@@ -33,8 +33,8 @@ function selectField(index) {
 
 function selectColour(index) {
   var x = document.getElementsByClassName('colour_' + index);
-  const colours = ["#C5D89D","#FFF2C6", "#9CAB84", "#FDDB3A", "#F8FAB4", 
-                   "#FFD6BA", "#F4BBBB", "#B6FFA1", "#ADC4CE", "#D8D3CD"]; 
+  const colours = ["#9FD0F0","#F0B49F", "#CFA6F0", "#A0E0B0", "#F0D39F", 
+                   "#B0B4F0", "#F0A0C6", "#9FC6A0", "#C6D0F0", "#A0C0E0"]; 
   for (let element of x) {
     element.style.background = colours[(index-1)%colours.length];
   }
