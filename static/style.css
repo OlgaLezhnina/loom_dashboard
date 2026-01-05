@@ -5,11 +5,6 @@
 }
 
 @font-face {
-  font-family: Overload Burn;
-  src: url(/static/overload.burn-regular.otf);
-}
-
-@font-face {
   font-family: Barlow ExtraBold;
   src: url(/static/barlow.extrabold.ttf);
 }
@@ -88,7 +83,7 @@ div.two_cards {
 }
 
 div.card {
-  min-width:30vw;
+  min-width: max(30vw, 30ch);
   background-color: #E3E5E6; 
   border-radius: 10px;
   margin-top: 10px;
@@ -96,6 +91,12 @@ div.card {
   margin-right: 10px; 
   padding: 10px;
   box-shadow: 5px 5px 2px #5a5b63;    
+}
+
+@media screen and (max-width:600px) {
+  div.card {
+    min-width: max(80vw, 30ch);
+  }
 }
 
 #schemata_pic {
@@ -160,6 +161,12 @@ div.num {
   display:flex;
   flex-direction: row;
   flex-wrap: wrap;  
+}
+
+@media screen and (max-width:600px) {
+  #fields {
+    flex-direction: column;
+  }
 }
 /* Field button */
 .button {
@@ -269,6 +276,13 @@ div.info_line {
   width: 100%;
   margin: 5px;
 }
+
+@media screen and (max-width:600px) {
+  div.info_line {
+    flex-direction: column;
+  }
+}
+
 div.record_paper{
   width: 55%;
   font-style: italic;
