@@ -8,8 +8,8 @@
     <script src="static/useFunctions.js"></script>
   </head>
   <body>
-    <div id="overview">
-      <div id="flipper" class="explanation">
+    <div id="overview" class="v-box">
+      <div id="explanation" class="bubble">
         This is an interactive presentation of the TIB Knowledge Loom records. 
         Select specific domains to get detailed information on the records:
         (i) the record title, (ii) the related research paper DOI,
@@ -19,7 +19,7 @@
         <a href="main_page.html" up-target="#overview">Back to Overview</a>
         </p>
       </div>
-      <div id="main" class="flex-container">
+      <div class="v-box">
         {% for name in summary.all_field_names %}
             {% if name != "Overall" %}
               <div id="fin_{{loop.index}}" class="field_wrap">

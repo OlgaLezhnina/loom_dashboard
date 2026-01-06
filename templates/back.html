@@ -2,12 +2,13 @@
 <html>
   <head>
     <link rel="stylesheet" href="static/unpoly.css" />
+    <link rel="stylesheet" href="static/style.css">
     <script src="static/unpoly.js"></script>
     <script src="https://d3js.org/d3.v4.js"></script>
   </head>
   <body>
     <!-- HTML here may use Unpoly attributes like [up-follow] -->
-    <div up-href="front.html" id="records" class="card" up-target="#records" up-follow>  
+    <div up-href="front.html" id="records" class="card bubble" up-target="#records" up-follow>  
       <div class="card_name">Loom Records</div>
       <div id="pp_count" class="count">
       <div class="row_name">Papers</div> 
@@ -28,7 +29,7 @@
        {% endfor %} 
        </div>
     </div>
-    <div up-href="front.html" id="data" class="card" up-target="#data" up-follow>
+    <div up-href="front.html" id="data" class="card bubble" up-target="#data" up-follow>
       <div class="card_name">Data and Code</div> 
       <div id="csv_count" class="count">
       <div class="row_name">CSV data files</div>
@@ -49,7 +50,7 @@
       {% endfor %} 
       </div>
     </div>
-    <div up-href="front.html" id="methods" class="card" up-target="#methods" up-follow> 
+    <div up-href="front.html" id="methods" class="card bubble" up-target="#methods" up-follow> 
       <div class="card_name">Schemata</div>
       <div id="dp_count" class="count">
       <div class="sch_name">Data Preprocessing</div>

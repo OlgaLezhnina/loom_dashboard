@@ -12,15 +12,15 @@
     <div id="title">
       <img src="/static/title.png" style="width:auto;height:70px;">
     </div>
-    <div id="main" class="flex-container">
-      <div id="fields">
+    <div class="v-box">
+      <div id="fields" class="bubble">
       {% from 'field_button.html' import field_name %}
       {% for name in summary.all_field_names %}
         {{ field_name(name, loop.index) }}
       {% endfor %}
       </div>
-      <div id="overview">
-      <div id="flipper" class="explanation">
+      <div id="overview" class="v-box">
+      <div id="explanation" class="bubble">
       This is an interactive overview of the TIB Knowledge Loom.
       Select specific domains or the Overall field for summary,
       flip the cards for more context (click a card anywhere to flip),
@@ -30,7 +30,7 @@
       </p>
       </div>
       <div id="flipcards">        
-        <div id="two_cards">
+        <div id="two_cards" class="v-box">
           <div id="records" up-defer="insert" up-href="back.html"> ... </div>
           <div id="data" up-defer="insert" up-href="back.html"> ... </div>
         </div>  
