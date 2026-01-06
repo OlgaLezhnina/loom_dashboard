@@ -27,7 +27,6 @@
          <div id="st_{{loop.index}}" class="num colour_{{loop.index}}">{{ value }}</div>
        {% endfor %} 
        </div>
-    <div class="flip">Flip the card</div>
     </div>
     <div up-href="front.html" id="data" class="card" up-target="#data" up-follow>
       <div class="card_name">Data and Code</div> 
@@ -49,7 +48,6 @@
         <div id="r_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["R"] }}</div>
       {% endfor %} 
       </div>
-    <div class="flip">Flip the card</div>
     </div>
     <div up-href="front.html" id="methods" class="card" up-target="#methods" up-follow> 
       <div class="card_name">Schemata</div>
@@ -113,7 +111,6 @@
         <div id="fa_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["fa"] }}</div>
       {% endfor %} 
       </div>
-      <div class="flip">Flip the card</div>
     </div>
   </body>
 </html>

@@ -9,6 +9,7 @@
   src: url(/static/barlow.extrabold.ttf);
 }
 
+/* pattern in the background */
 body::before {
   content: "";
   width: 100%;
@@ -20,24 +21,30 @@ body::before {
   min-height: calc(100vw + 100vh);
   background-image: url("grid.png");
   z-index: -1;
-  opacity: 0.5;
+  opacity: 0.3;
   /*rotate: 30deg;*/
 }
 
+/* TODO delete this
 img {
   width: 100%;
   height: auto;
 }
+#title {
+  text-align: center;
+  font: 70px"Barlow ExtraBold";
+  letter-spacing: 8px;
+  word-spacing: 20px;
+  color: #454a52; 
+  text-shadow: 4px 4px 8px #5a5b63;
+  padding: 10px;
+  margin: 20px;
+}
+*/
 
 #title {
-text-align: center;
-font: 70px"Barlow ExtraBold";
-letter-spacing: 8px;
-word-spacing: 20px;
-color: #454a52; 
-text-shadow: 4px 4px 8px #5a5b63;
-padding: 10px;
-margin: 20px;
+  text-align: center;
+  margin: 30px;
 }
 
 div.flex-container {
@@ -48,29 +55,31 @@ div.flex-container {
   text-align: center;
 }
 
-
+#overview {
+ display: inline-flex;
+ flex-direction: column;
+ width:100%;
+ align-items: center;
+}
 div.field_box{
   margin: 5px;
 }
 
 div.explanation {
   display:inline-block;
-  /* flex:0 0 100%;*/
-  width:50vw; 
+  width:50vw;
   background-color: #E3E5E6; 
   border-radius: 10px;
-  margin-top: 10px;
+  margin-top: 20px;
   margin-bottom: 20px;
   margin-right: 10px; 
   padding: 10px;
   text-align: left;
-  font:30px;
   box-shadow: 5px 5px 2px #5a5b63;    
 }
 
 #flipcards {
-  display:inline-flex;
-  width: min-content;
+  display: flex;
   flex-direction: row;
   padding: 10px;
 }
@@ -82,12 +91,13 @@ div.explanation {
   }
 }
 
-div.two_cards {
-  display:inline-flex;
+#two_cards {
+  display: flex;
   flex-direction: column;
 }
 
 div.card {
+  position: relative;
   min-width: max(30vw, 30ch);
   background-color: #E3E5E6; 
   border-radius: 10px;
@@ -97,6 +107,18 @@ div.card {
   padding: 10px;
   box-shadow: 5px 5px 2px #5a5b63;    
 }
+
+div.card::after {
+    content: "↩";
+    display: block;
+    width: inherit;
+    height: 0.8em;
+    text-align: right;
+    /* transform-origin: bottom right; */
+    /* rotate: 0deg; */
+    opacity: 0.7;
+}
+
 
 @media screen and (max-width:600px) {
   div.card {
@@ -110,13 +132,6 @@ div.card {
   text-align: center;
 }
 
-/*div.card::after {
-    content: url("arrow.png");
-    position: relative;
-    bottom: 0;
-    right: 0;
-    opacity: 0.5;
-}*/
 
 div.count {
   display:flex;
@@ -151,7 +166,6 @@ div.row_name {
   padding-bottom: 8px;
 }
 div.num {
-  display:flex;
   width: 3ch;
   border-radius: 10px;
   padding-left: 5px;
@@ -163,9 +177,16 @@ div.num {
 }
 
 #fields {
+  position: sticky;
+  top: 0px;
+  z-index:10;
   display:flex;
   flex-direction: row;
-  flex-wrap: wrap;  
+  flex-wrap: wrap;
+  background-color: #E3E5E6;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 5px;   
 }
 
 @media screen and (max-width:600px) {

@@ -19,7 +19,7 @@
         <a href="main_page.html" up-target="#overview">Back to Overview</a>
         </p>
       </div>
-      <div id="main_fin" class="flex-container">
+      <div id="main" class="flex-container">
         {% for name in summary.all_field_names %}
             {% if name != "Overall" %}
               <div id="fin_{{loop.index}}" class="field_wrap">
