@@ -10,11 +10,11 @@
   <body>
     <div id="overview" class="v-box">
       <div id="explanation" class="bubble">
-        This is an interactive presentation of the TIB Knowledge Loom records. 
-        Select specific domains to get detailed information on the records:
-        (i) the record title, (ii) the related research paper DOI,
-        (iii) data files and code files, which can be downloaded, and
-        (iv) schemata used in the record. 
+        This is an&nbspinteractive presentation of&nbspthe&nbspTIB Knowledge Loom records. 
+        Select specific domains to&nbspget detailed information on&nbspthe&nbsprecords:
+        the&nbsprecord title; the&nbsprelated research paper DOI;
+        data files and&nbspcode files, which can be downloaded; 
+        and&nbspschemata used in&nbspthe&nbsprecord. 
         <p style="text-align: center;">
         <a href="main_page.html" up-target="#overview">Back to Overview</a>
         </p>
@@ -28,7 +28,7 @@
                   {% for line in summary.final_info[name] %}
                     {% if loop.index ==2 %}
                       <details>
-                      <summary style="font-size:14px;">more records</summary>
+                      <summary class="noselect" style="font-size:14px;">more records</summary>
                     {% endif %} 
                   <div class="info_line">
                     <div class="record_paper">
@@ -45,7 +45,7 @@
                       {% for key, value in line[4].items() %}
                         {% if loop.index ==4 %}
                           <details>
-                          <summary style="font-size:14px;">more files</summary>
+                          <summary class="noselect" style="font-size:14px;">more files</summary>
                         {% endif %}
                         <a href={{ value }} target="_blank">{{ key }}</a>
                       {% endfor %}
@@ -61,7 +61,7 @@
                       {% for key, value in line[3].items() %}
                         {% if loop.index ==4 %}
                           <details>
-                          <summary style="font-size:14px;">more files</summary>
+                          <summary class="noselect" style="font-size:14px;">more files</summary>
                         {% endif %} 
                         <a href={{ value }} target="_blank">{{ key }}</a>
                       {% endfor %}
@@ -73,7 +73,7 @@
                       {% for schema in line[1] %}
                         {% if loop.index ==2 %}
                           <details>
-                          <summary style="font-size:14px;">more schemata</summary>
+                          <summary class="noselect" style="font-size:14px;">more schemata</summary>
                         {% endif %} 
                           {{ schema }}
                       {% endfor %}

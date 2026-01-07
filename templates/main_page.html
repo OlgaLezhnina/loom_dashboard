@@ -10,7 +10,9 @@
   </head>
   <body>
     <div id="title">
-      <img src="/static/title.png" style="width:auto;height:70px;">
+      <div id="logo"> <!-- important for adding background under the image -->
+        <img src="/static/title.png" style="width:auto;height:70px;">
+      </div>
     </div>
     <div class="v-box">
       <div id="fields" class="bubble">
@@ -21,15 +23,15 @@
       </div>
       <div id="overview" class="v-box">
       <div id="explanation" class="bubble">
-      This is an interactive overview of the TIB Knowledge Loom.
-      Select specific domains or the Overall field for summary,
-      flip the cards for more context (click a card anywhere to flip),
-      and download data or code files via
+      This is an&nbspinteractive overview of&nbspthe&nbspTIB Knowledge Loom.
+      Select specific domains or&nbspthe&nbspOverall field for&nbspsummary,
+      flip the&nbspcards for&nbspmore context (click a&nbspcard anywhere to&nbspflip),
+      and&nbspdownload data or&nbspcode files via
       <p style="text-align: center;">
       <a href="final_info.html" up-target="#overview">Detailed Information</a>
       </p>
       </div>
-      <div id="flipcards">        
+      <div id="flipcards">
         <div id="two_cards" class="v-box">
           <div id="records" up-defer="insert" up-href="back.html"> ... </div>
           <div id="data" up-defer="insert" up-href="back.html"> ... </div>

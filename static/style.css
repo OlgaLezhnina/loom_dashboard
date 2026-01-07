@@ -9,6 +9,36 @@
   src: url(/static/barlow.extrabold.ttf);
 }
 
+#title {
+	text-align: center;
+	margin: 30px;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	gap: 0px;
+	display: flex;
+}
+
+#logo {
+    position: relative;
+}
+
+#logo::before {
+	content: "";
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-height: 100%;
+	z-index: -1;
+	opacity: 1;
+	display: block;
+	background-color: white;
+	filter: blur(20px);
+}
+
 /* pattern in the background */
 body::before {
   content: "";
@@ -20,39 +50,26 @@ body::before {
   width: calc(100vw + 100vh);
   min-height: calc(100vw + 100vh);
   background-image: url("grid.png");
-  z-index: -1;
-  opacity: 0.3;
-  /*rotate: 30deg;*/
+  z-index: -2;
+  opacity: 0.38;
+  rotate: -47deg;
 }
-
-/* TODO delete this
-img {
-  width: 100%;
-  height: auto;
-}
-#title {
-  text-align: center;
-  font: 70px"Barlow ExtraBold";
-  letter-spacing: 8px;
-  word-spacing: 20px;
-  color: #454a52; 
-  text-shadow: 4px 4px 8px #5a5b63;
-  padding: 10px;
-  margin: 20px;
-}
-*/
 
 #title {
   text-align: center;
   margin: 30px;
 }
 
-.v-box {
+.v-box, .card {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
+  gap: 15px;
+}
+
+#two_cards {
   gap: 10px;
 }
 
@@ -61,11 +78,12 @@ div.field_box{
 }
 
 /* style for bubble-like divs, with round corners and a shadow */
-.bubble {
+.bubble, .card {
   background-color: #E3E5E6;
   border-radius: 10px;
   padding: 10px;
-  box-shadow: 5px 5px 2px #5a5b63;
+  padding-left: 20px;
+  box-shadow: 5px 5px 15px #5a5b63;
 }
 
 #explanation {
@@ -73,6 +91,7 @@ div.field_box{
   max-width: 100ch;
   min-width: 50ch;
   text-align: left;
+  margin-bottom: 10px;
 }
 
 #flipcards {
@@ -81,22 +100,6 @@ div.field_box{
   align-items: flex-start;
   justify-content: center;
   gap: 10px;
-}
-
-.card {
-  position: relative; /* needed for a flip symbol to attach it to lower right corner */
-
-}
-
-div.card::after {
-    content: "↩";
-    display: block;
-    width: inherit;
-    height: 0.8em;
-    text-align: right;
-    /* transform-origin: bottom right; */
-    /* rotate: 0deg; */
-    opacity: 0.7;
 }
 
 /* fixed widths for cards on the left and right sides: */
@@ -111,71 +114,82 @@ div.card::after {
   min-height: 53.5ch;
 }
 
-/*
-#two_cards {
-  display: flex;
-  flex-direction: column;
-}*/
-
 #schemata_pic {
   display:block;
   width:100%;
   text-align: center;
 }
 
-/*==============================================================================*/
-/*=== continue from here! ======================================================*/
-/*==============================================================================*/
-
-
-div.count {
-  display:flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
-  font-size: 15px;
-  padding: 10px;  
+/* NOTE .card style is spread across this bit, .v-box and .bubble */
+.card {
+  position: relative; /* needed for a flip symbol to attach it to lower right corner */
+  align-items: stretch;
+  gap: 10px;
 }
 
-div.card_name {
+.card::after {
+    content: "↩";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    opacity: 0.7;
+}
+
+.card_name {
+  text-align: center;
   font-size: 20px;
   font-weight: bold;
   padding: 8px; 
 }
 
-div.flip {
+.count {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2px;
+  font-size: 15px;
+}
+
+.row_name, .sch_name {
+  flex: 100%;
+  text-align: left;
+}
+
+.sch_name {
+  width: 20ch;
+}
+
+.row_name {
+  width: 15ch;
+}
+
+.num {
+  font-size: 15px;
+  text-align: center;
+  width: 4ch;
+  min-width: 4ch;
+  height: 2em;
+  line-height: 2em;
+  border-radius: 1ch;
+}
+
+/* TODO delete this
+.flip {
   font-size:18px;
   font-weight: bold;
   text-decoration: underline dotted;
   margin: 10px;
 }
-div.sch_name {
-  width: 20ch;
-  text-align: left;
-  padding-top: 8px;
-  padding-bottom: 8px;
-}
+*/
 
-div.row_name {
-  width: 15ch;
-  text-align: left;
-  padding-top: 8px;
-  padding-bottom: 8px;
-}
-div.num {
-  width: 3ch;
-  min-width: 3ch;
-  border-radius: 10px;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  margin-right: 2px;
-  font-size: 15px;  
-  text-align: center;
-}
+
+/*==============================================================================*/
+/*=== continue from here! ======================================================*/
+/*==============================================================================*/
+
 
 #fields {
   position: sticky;
@@ -250,7 +264,7 @@ div.num {
 }
 
 input:checked + .slider {
-  background-color: #7d827d;
+  background-color: #7a7a7a;
 }
 
 input:focus + .slider {
@@ -280,12 +294,26 @@ div.field_wrap{
   width: 90vw;
   flex-direction: column;
   background-color: #E3E5E6; 
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   border-radius: 10px;
   box-shadow: 5px 5px 2px #5a5b63; 
 } 
 
 #more {display: none;}
+
+
+/* a class that disables selecting text; */
+/* used primaraly for <summary> element */
+/* so that "more something" can't be selected when copying text */
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
 
 div.info_field {
   display:inline-flex;
@@ -337,5 +365,8 @@ div.schemata{
   }
   #records, #data, #methods, #explanation {
     width: 55ch;
+  }
+  .row_name {
+    width: 20ch;
   }
 }

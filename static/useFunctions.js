@@ -48,5 +48,10 @@ function assignColours() {
     selectColour(counter);
     counter++; 
   }
+  var index = counter - 1;
+  var x = document.getElementsByClassName('colour_' + index);
+  for (let element of x) {
+    element.style.background = "#B0B0B8";
+  }
 } 
 

@@ -13,19 +13,19 @@
       <div id="pp_count" class="count">
       <div class="row_name">Papers</div> 
       {% for name, value in summary.pp_count.items() %}
-        <div id="pp_{{loop.index}}" class="num colour_{{loop.index}}">{{ value }}</div>
+        <span id="pp_{{loop.index}}" class="num colour_{{loop.index}}">{{ value }}</span>
       {% endfor %} 
       </div>
      <div id="au_count" class="count">
       <div class="row_name">Authors</div> 
       {% for name, value in summary.au_count.items() %}
-        <div id="au_{{loop.index}}" class="num colour_{{loop.index}}">{{ value }}</div>
+        <span id="au_{{loop.index}}" class="num colour_{{loop.index}}">{{ value }}</span>
       {% endfor %} 
       </div>
        <div id="st_count" class="count">
        <div class="row_name">Statements</div> 
        {% for name, value in summary.st_count.items() %}
-         <div id="st_{{loop.index}}" class="num colour_{{loop.index}}">{{ value }}</div>
+         <span id="st_{{loop.index}}" class="num colour_{{loop.index}}">{{ value }}</span>
        {% endfor %} 
        </div>
     </div>
@@ -34,19 +34,19 @@
       <div id="csv_count" class="count">
       <div class="row_name">CSV data files</div>
       {% for name, value in summary.csv_count.items() %}
-        <div id="csv_{{loop.index}}" class="num colour_{{loop.index}}">{{ value }}</div>
+        <span id="csv_{{loop.index}}" class="num colour_{{loop.index}}">{{ value }}</span>
       {% endfor %} 
       </div>
      <div id="py_count" class="count">
       <div class="row_name">Python files</div>
       {% for name, value in summary.lang_count.items() %}
-        <div id="py_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["Python"] }}</div>
+        <span id="py_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["Python"] }}</span>
       {% endfor %} 
       </div>
       <div id="r_count" class="count">
       <div class="row_name">R files</div>
       {% for name, value in summary.lang_count.items() %}
-        <div id="r_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["R"] }}</div>
+        <span id="r_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["R"] }}</span>
       {% endfor %} 
       </div>
     </div>
@@ -55,61 +55,61 @@
       <div id="dp_count" class="count">
       <div class="sch_name">Data Preprocessing</div>
       {% for name, value in summary.method_count.items() %}
-        <div id="dp_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["dp"] }}</div>
+        <span id="dp_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["dp"] }}</span>
       {% endfor %} 
       </div>
       <div id="ds_count" class="count">
       <div class="sch_name">Descriptive Statistics</div>
       {% for name, value in summary.method_count.items() %}
-        <div id="ds_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["ds"] }}</div>
+        <span id="ds_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["ds"] }}</span>
       {% endfor %} 
       </div>
       <div id="ae_count" class="count">
       <div class="sch_name">Algorithm Evaluation</div>
       {% for name, value in summary.method_count.items() %}
-        <div id="ae_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["ae"] }}</div>
+        <span id="ae_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["ae"] }}</span>
       {% endfor %} 
       </div>
       <div id="ma_count" class="count">
       <div class="sch_name">Multilevel Analysis</div>
       {% for name, value in summary.method_count.items() %}
-        <div id="ma_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["ma"] }}</div>
+        <span id="ma_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["ma"] }}</span>
       {% endfor %} 
       </div>
       <div id="ca_count" class="count">
       <div class="sch_name">Correlation Analysis</div>
       {% for name, value in summary.method_count.items() %}
-        <div id="ca_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["ca"] }}</div>
+        <span id="ca_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["ca"] }}</span>
       {% endfor %} 
       </div>      
       <div id="gc_count" class="count">
       <div class="sch_name">Group Comparison</div>
       {% for name, value in summary.method_count.items() %}
-        <div id="gc_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["gc"] }}</div>
+        <span id="gc_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["gc"] }}</span>
       {% endfor %} 
       </div>
       <div id="ra_count" class="count">
       <div class="sch_name">Regression Analysis</div>
       {% for name, value in summary.method_count.items() %}
-        <div id="ra_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["ra"] }}</div>
+        <span id="ra_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["ra"] }}</span>
       {% endfor %} 
       </div>
       <div id="cp_count" class="count">
       <div class="sch_name">Class Prediction</div>
       {% for name, value in summary.method_count.items() %}
-        <div id="cp_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["cp"] }}</div>
+        <span id="cp_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["cp"] }}</span>
       {% endfor %} 
       </div>
       <div id="cd_count" class="count">
       <div class="sch_name">Class Discovery</div>
       {% for name, value in summary.method_count.items() %}
-        <div id="cd_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["cd"] }}</div>
+        <span id="cd_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["cd"] }}</span>
       {% endfor %} 
       </div>
       <div id="fa_count" class="count">
       <div class="sch_name">Factor Analysis</div>
       {% for name, value in summary.method_count.items() %}
-        <div id="fa_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["fa"] }}</div>
+        <span id="fa_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["fa"] }}</span>
       {% endfor %} 
       </div>
     </div>
