@@ -3,7 +3,8 @@
   <label class="switch">
     <input type="checkbox" id="field_name_{{ index }}" onclick="selectField({{ index }})" checked>
     <span class="slider"></span>  
-  </label> <span class="button colour_{{ index }}"> {{ name }} </span>  
+  </label>
+  <label for="field_name_{{ index }}"><span class="button colour_{{ index }}"> {{ name }} </span> </label>
   </div>
 {%- endmacro %}
 

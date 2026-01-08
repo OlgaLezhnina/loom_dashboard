@@ -12,7 +12,7 @@
       <div id="explanation" class="bubble">
         This is an&nbspinteractive presentation of&nbspthe&nbspTIB Knowledge Loom records. 
         Select specific domains to&nbspget detailed information on&nbspthe&nbsprecords:
-        the&nbsprecord title; the&nbsprelated research paper DOI;
+        the&nbsprecord title; the&nbsprelated research article DOI;
         data files and&nbspcode files, which can be downloaded; 
         and&nbspschemata used in&nbspthe&nbsprecord. 
         <p style="text-align: center;">
@@ -34,13 +34,13 @@
                     <div class="record_paper">
                         {{ line[0] }}       
                         {% for doi in line[2] %}
-                        <a href={{ doi }} target="_blank">(paper)</a>
+                        <a href={{ doi }} target="_blank">(article)</a>
                         {% endfor %}  
                     </div>         
                     <div class="data_files">
                       Data:
                       {% if not line[4].items() %}
-                        see the paper
+                        see the article
                       {% endif %} 
                       {% for key, value in line[4].items() %}
                         {% if loop.index ==4 %}
@@ -56,7 +56,7 @@
                     <div class="code_files">
                       Code:
                       {% if not line[3].items() %}
-                        see the paper
+                        see the article
                       {% endif %} 
                       {% for key, value in line[3].items() %}
                         {% if loop.index ==4 %}

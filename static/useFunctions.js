@@ -11,7 +11,7 @@ function checkButtons() {
     selectField(counter);
     counter++; 
   }
-} 
+}
 
 
 // checkbox with id field_name_{id} is responsible for toggling multiple elements

@@ -42,16 +42,16 @@
 /* pattern in the background */
 body::before {
   content: "";
-  width: 100%;
-  height: 100%;
   position: fixed;
   top: -50vw;
   left: -50vh;
   width: calc(100vw + 100vh);
-  min-height: calc(100vw + 100vh);
+  height: calc(100vw + 100vh);
   background-image: url("grid.png");
+  background-size: 400px 400px;
   z-index: -2;
   opacity: 0.38;
+  /*scale: 25%;*/
   rotate: -47deg;
 }
 
@@ -71,10 +71,6 @@ body::before {
 
 #two_cards {
   gap: 10px;
-}
-
-div.field_box{
-  margin: 5px;
 }
 
 /* style for bubble-like divs, with round corners and a shadow */
@@ -176,34 +172,43 @@ div.field_box{
   border-radius: 1ch;
 }
 
-/* TODO delete this
-.flip {
-  font-size:18px;
-  font-weight: bold;
-  text-decoration: underline dotted;
-  margin: 10px;
-}
-*/
-
-
 /*==============================================================================*/
 /*=== continue from here! ======================================================*/
 /*==============================================================================*/
-
 
 #fields {
   position: sticky;
   top: 0px;
   z-index:10;
+  margin-bottom: 10px;
+  padding: 10px;
   display:flex;
   flex-direction: row;
   flex-wrap: wrap;
-  background-color: #E3E5E6;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  padding: 5px;   
+  justify-content: flex-start;
+  align-content: flex-start;
+  gap: 10px;
 }
 
+.field_box{
+  /*margin: 5px;*/
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 27px; /* was 34 */
+  vertical-align: middle;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
 
 /* Field button */
 .button {
@@ -219,21 +224,6 @@ div.field_box{
   border-radius: 10px;
   vertical-align: middle;
   line-height: 27px;
-}
-/* The switch - the box around the slider */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 27px; /* was 34 */
-  vertical-align: middle;
-}
-
-/* Hide default HTML checkbox */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
 }
 
 /* The slider */

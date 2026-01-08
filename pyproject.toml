@@ -16,6 +16,6 @@ license = {text = "MIT"}
 dependencies = [
     "cache-decorator",
     "dict-hash",
-    "Flask", 
-    "requests",    
+    "Flask",
+    "requests",
 ]
