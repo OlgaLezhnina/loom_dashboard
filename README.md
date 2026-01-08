@@ -17,3 +17,5 @@ uv run flask --app loom run -p 8000
 ```
 When starting the dashboard for the first time, please consider that refreshing the cache takes longer 
 than in subsequent runs.  
+
+![The dashboard](screenshot1.png)
