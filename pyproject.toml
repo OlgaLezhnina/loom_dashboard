@@ -1,0 +1,20 @@
+[project]
+name = "loom_dashboard"
+version = "0.1.0"
+authors = [
+    {name = "Olga Lezhnina", email = "olga.lezhnina@tib.eu"},
+    {name = "Manuel Prinz", email = "manuel.prinz@tib.eu"},
+    {name = "Markus Stocker", email = "markus.stocker@tib.eu"},
+]
+maintainers = [
+    {name = "Markus Stocker", email = "markus.stocker@tib.eu"}
+]
+description = "The TIB Knowledge Loom dashboard"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+dependencies = [
+    "cache_decorator",
+    "dict_hash",
+    "requests",    
+]

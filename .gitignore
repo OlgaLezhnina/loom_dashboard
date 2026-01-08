@@ -1,6 +1,9 @@
 # folder used by cache_decorator lib
 cache/
 
+# uv lock file, since we dont want to freeze it
+uv.lock
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

@@ -1,5 +1,5 @@
-# flask --app loom run -p 80
-# flask --app loom run -p 80 --host=0.0.0.0
+# flask --app loom run -p 8000
+# flask --app loom run -p 8000 --host=0.0.0.0
 from .get_data import summary
 
 from flask import Flask, render_template
@@ -29,4 +29,4 @@ def final_info():
 
 
 if __name__ == "__main__":
-    app.run(port=80)
+    app.run(port=8000)
