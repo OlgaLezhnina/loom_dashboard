@@ -14,7 +14,8 @@ readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}
 dependencies = [
-    "cache_decorator",
-    "dict_hash",
+    "cache-decorator",
+    "dict-hash",
+    "Flask", 
     "requests",    
 ]
