@@ -1,11 +1,8 @@
 {% macro field_name(name, index) -%}
-  <div class="field_box">
-  <label class="switch">
+  <label class="slider colour_{{ index }}">
     <input type="checkbox" id="field_name_{{ index }}" onclick="selectField({{ index }})" checked>
-    <span class="slider"></span>  
+    {{ name }}
   </label>
-  <label for="field_name_{{ index }}"><span class="button colour_{{ index }}"> {{ name }} </span> </label>
-  </div>
 {%- endmacro %}
 
 

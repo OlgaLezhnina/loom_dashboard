@@ -9,36 +9,34 @@
     <script src="static/useFunctions.js"></script>
   </head>
   <body>
-    <div id="title">
-      <div id="logo"> <!-- important for adding background under the image -->
-        <img src="/static/title.png" style="width:auto;height:70px;">
-      </div>
-    </div>
     <div class="v-box">
-      <div id="fields" class="bubble">
-      {% from 'field_button.html' import field_name %}
-      {% for name in summary.all_field_names %}
+      <div id="logo" class="centered">
+        <img src="static/title.png" style="width:auto;height:70px;">
+      </div>
+      <div id="fields" class="centered bubble">
+{% from 'field_button.html' import field_name %}
+{% for name in summary.all_field_names %}
         {{ field_name(name, loop.index) }}
-      {% endfor %}
+{% endfor %}
       </div>
-      <div id="overview" class="v-box">
-      <div id="explanation" class="bubble">
-      This is an&nbsp;interactive overview of&nbsp;the&nbsp;TIB Knowledge Loom.
-      Select specific domains or&nbsp;the&nbsp;Overall field for&nbspsummary,
-      flip the&nbsp;cards for&nbsp;more context (click a&nbsp;card anywhere to&nbsp;flip),
-      and&nbsp;download data or&nbsp;code files via
-      <p style="text-align: center;">
-      <a href="final_info.html" up-target="#overview">Detailed Information</a>
-      </p>
+      <div id="overview" class="display-contents">
+        <div id="explanation" class="centered bubble">
+          This is an&nbsp;interactive overview of&nbsp;the&nbsp;TIB Knowledge Loom.
+          Select specific domains or&nbsp;the&nbsp;Overall field for&nbspsummary,
+          flip the&nbsp;cards for&nbsp;more context (click a&nbsp;card anywhere to&nbsp;flip),
+          and&nbsp;download data or&nbsp;code files via
+          <p style="text-align: center;">
+            <a href="final_info.html" up-target="#overview">Detailed Information</a>
+          </p>
+        </div>
+        <div id="flipcards" class="centered">
+          <div id="two_cards" class="v-box">
+            <div id="records" up-defer="insert" up-href="back.html"> ... </div>
+            <div id="data" up-defer="insert" up-href="back.html"> ... </div>
+          </div>  
+          <div id="methods" up-defer="insert" up-href="back.html"> ... </div>
+        </div>
       </div>
-      <div id="flipcards">
-        <div id="two_cards" class="v-box">
-          <div id="records" up-defer="insert" up-href="back.html"> ... </div>
-          <div id="data" up-defer="insert" up-href="back.html"> ... </div>
-        </div>  
-        <div id="methods" up-defer="insert" up-href="back.html"> ... </div>
-      </div>
-    </div>
     </div>
   </body>
 </html>
