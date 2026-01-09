@@ -22,7 +22,7 @@ than in subsequent runs.
 
 We also used the [Intertwined](https://github.com/nst/Intertwined ) library and the
 [Barlow](https://www.1001fonts.com/barlow-font.html) font for aesthetics.
-Many thanks to Mikhail Lezhnin and Valeriya Patueva for constructive criticism 
+Many thanks to [Mikhail Lezhnin](https://github.com/mike239x/) and Valeriya Patueva for constructive criticism 
 and useful suggestions.     
 
 ![The dashboard](screenshot1.png)
