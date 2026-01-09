@@ -1,4 +1,4 @@
-# Loom Dahboard
+# Loom Dashboard
 **100% AI-free: we did not use any AI technologies in developing this
 dashboard.**
 
@@ -10,8 +10,7 @@ It runs on [Flask](https://flask.palletsprojects.com/en/stable/) and uses
 the [unpoly](https://unpoly.com/) framework for enhancing HTML.
 We used the [Intertwined](https://github.com/nst/Intertwined ) library and the
 [Barlow](https://www.1001fonts.com/barlow-font.html) font for aesthetics.
-Many thanks to [Mikhail Lezhnin](https://github.com/mike239x/) and Valeriya Patueva for constructive criticism 
-and useful suggestions.   
+ 
 
 ## Running locally
 The project can be easily reproduced:
@@ -29,5 +28,6 @@ The dashboard is taking the related data from [Leibnitz Data Manager (LDM)](http
 If another repository is used, or the structure of the LDM folders changes, 
 the [get_data](get_data.py) file has to be changed accordingly.  
   
-
-
+## Acknowledgements 
+Many thanks to [Mikhail Lezhnin](https://github.com/mike239x/) and Valeriya Patueva for constructive criticism 
+and useful suggestions.  
