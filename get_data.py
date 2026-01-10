@@ -182,8 +182,8 @@ class LoomRecord(Hashable):
 
     def consistent_hash(self):
         """
-        Hash function for the record.
-        Since records have unique folder name, we just use that.
+        Hash function for the record
+        Since records have unique folder names, we just use that
 
         :return: hash string
         """
@@ -192,7 +192,7 @@ class LoomRecord(Hashable):
 
 def find_loom_records():
     """
-    Extract Loom records based on research articles from LDM
+    Extract Loom records which are based on research articles from LDM
 
     :return: a dictionary with folder names as keys and lists of resources(files) as values
     """
@@ -205,7 +205,7 @@ def find_loom_records():
         print("ERROR ACCESSING API: ", API_URL, e.__str__())
     search_result = response.json().get('result')
     folders_1 = search_result["results"]
-    # select folders related to research articles
+    # select folders related to research articles (with a url in "notes/IsSupplementTo")
     folders_2 = [d for d in folders_1 if d.get("notes") != '']
     folders_3 = [d for d in folders_2 if d.get("notes").split()[1][:-1].startswith("https")]
     records = {}

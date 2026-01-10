@@ -1,8 +1,16 @@
+/**
+ * Check the states of all buttons, show/hide elements, and re-colour domain-related entries 
+   when unpoly adds a fragment with one of these ids
+ */
 up.compiler('#records, #data, #methods, #overview', function(element, data, meta) {
   checkButtons();
   assignColours();
 })
 
+
+/**
+ * Show/ hide all related elements depenging on the field_button state
+ */
 function checkButtons() {
   var counter = 1;
   while (true) {
@@ -13,11 +21,15 @@ function checkButtons() {
   }
 }
 
-
-// checkbox with id field_name_{id} is responsible for toggling multiple elements
+/**
+ * Show/ hide all related elements when a field(research domain) is selected/deselected
+ * @param  {Number} index The index of the field_button
+ */
 function selectField(index) {
+  // this checkbox is responsible for toggling multiple elements
   var button = document.getElementById("field_name_" + index);
   if (!button) return undefined;
+  // these prefixes are in ids of elements to be displayed/hidden
   const prefixes = ["pp_", "st_", "au_", "py_", "r_", "csv_", "fin_",
                     "dp_", "ds_", "ae_", "ma_", "ca_", "gc_", "ra_", "cp_", "cd_", "fa_"];
   for (const prefix of prefixes) {
@@ -31,6 +43,10 @@ function selectField(index) {
   }
 } 
 
+/**
+ * Set a colour for elements of the colour_{index} class
+ * @param  {Number} index The index for the colours
+ */
 function selectColour(index) {
   var x = document.getElementsByClassName('colour_' + index);
   const colours = ["#9FD0F0","#F0B49F", "#CFA6F0", "#A0E0B0", "#F0D39F", 
@@ -42,6 +58,10 @@ function selectColour(index) {
   }
 }
 
+
+/**
+ * Assign a colour to each field_button and all related elements
+ */
 function assignColours() {
   var counter = 1;
   while (true) {
@@ -50,6 +70,7 @@ function assignColours() {
     selectColour(counter);
     counter++; 
   }
+  // hardcode the grey colour for 'Overall', which is the last field_button
   var index = counter - 1;
   var x = document.getElementsByClassName('colour_' + index);
   for (let element of x) {

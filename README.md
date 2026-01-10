@@ -9,7 +9,7 @@ The dashboard is an interactive presentation of information provided by the
 It runs on [Flask](https://flask.palletsprojects.com/en/stable/) and uses 
 the [unpoly](https://unpoly.com/) framework for enhancing HTML.
 We used the [Intertwined](https://github.com/nst/Intertwined ) library for the background image
-and [Barlow](https://www.1001fonts.com/barlow-font.html) font for title.
+and [Barlow](https://www.1001fonts.com/barlow-font.html) font for the title.
  
 
 ## Running locally
@@ -24,7 +24,7 @@ When starting the dashboard for the first time, please consider that refreshing 
 than in subsequent runs. 
 
 ## Known limitations 
-The dashboard is taking the related data from [Leibnitz Data Manager (LDM)](https://service.tib.eu/ldmservice/about). 
+The dashboard takes the data from [Leibnitz Data Manager (LDM)](https://service.tib.eu/ldmservice/about). 
 If another repository is used, or the structure of the LDM folders changes, 
 the [get_data](get_data.py) file has to be changed accordingly.  
   
