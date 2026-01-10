@@ -270,6 +270,8 @@ div.field_wrap{
   flex-direction: column;
   background-color: #E3E5E6; 
   margin-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 10px;
   box-shadow: 5px 5px 15px #5a5b63; 
 } 
