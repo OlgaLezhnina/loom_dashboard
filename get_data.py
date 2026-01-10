@@ -2,29 +2,38 @@ from dict_hash import Hashable
 from cache_decorator import Cache
 import json
 import requests
-# from .timing import Timer, timing
-# TODO throw away papers without ABOUT (field) or call then unspecified?
-# TODO typos in fields?
-# TODO mention font ppl in Readme https://www.1001fonts.com/overload-font.html
 
 
-class Paper(Hashable):
+class LoomRecord(Hashable):
+    """
+    A class for a single Loom record based on a research article
+    """
+
     def __init__(self):
+        # the unique name of the folder for the record/article
         self.folder_name = ""
-        # the unique name of the folder for the paper
+        # files which belong to the record/article
         self.resources = []
-        # files belonging to the paper
+        # ro-crate metadata json
         self._ro_crate = None
-        # json with important information
-        # RO for research objects
 
     def _get_ro_crate(self):
+        """
+        A getter method for the ro-crate metadata
+
+        :return: the ro-crate metadata as a Python object
+        """
         if self._ro_crate is None:
             self._ro_crate = self._find_ro_crate()
         return self._ro_crate
     ro_crate = property(_get_ro_crate)
 
     def _find_ro_crate(self):
+        """
+        Extract the ro-crate metadata from resources
+
+        :return: the ro-crate metadata as a Python object
+        """
         ro_resource = next(
             (dct for dct in self.resources if dct["name"] == "ro-crate-metadata.json"),
             None)
@@ -34,6 +43,11 @@ class Paper(Hashable):
         return ro_crate
 
     def get_field_names(self):
+        """
+        Obtain the names of research domains to which the record belongs
+
+        :return: the set of domain names
+        """
         field_names = set()
         root = list(
             filter(lambda element: element['@id'] == './', self.ro_crate))[0]
@@ -44,15 +58,30 @@ class Paper(Hashable):
         return field_names
 
     def get_record_name(self):
+        """
+        Obtain the record name
+
+        :return: the record name as a string
+        """
         return self.root["name"]
 
     def get_publication_url(self):
+        """
+        Obtain the url(s) of the research article
+
+        :return: the list of urls, most frequently with a single element
+        """
         url_list = []
         for element in self.root["isBasedOn"]:
             url_list.append(element["@id"])
         return url_list
 
     def get_code_url(self):
+        """
+        Obtain the names and urls of code files
+
+        :return: the dictionary with code files names as keys and urls as values
+        """
         code_url = {}
         for resource in self.resources:
             if ".py" in resource["name"] or ".R" in resource["name"]:
@@ -60,6 +89,11 @@ class Paper(Hashable):
         return code_url
 
     def get_data_url(self):
+        """
+        Obtain the names and urls of data files
+
+        :return: a dictionary with data files names as keys and urls as values
+        """
         data_url = {}
         for resource in self.resources:
             if ".csv" in resource["name"]:
@@ -67,13 +101,22 @@ class Paper(Hashable):
         return data_url
 
     def count_statements(self):
+        """
+        Count the number of statements in the record
+
+        :return: the number of statements as integer
+        """
         statements_info = list(
             filter(lambda element: element['@type'] == ['Statement'], self.ro_crate))
         count = len(statements_info)
-        # count_dict = dict.fromkeys(self.field_names, count)
         return count
 
     def get_authors(self):
+        """
+        Obtain the names of the research article authors
+
+        :return: the list of authors names
+        """
         author_list = []
         author_info = list(
             filter(lambda element: element['@type'] == 'Person', self.ro_crate))
@@ -83,6 +126,11 @@ class Paper(Hashable):
         return author_list
 
     def count_languages(self):
+        """
+        Count the number of files in Python and R languages
+
+        :return: a dictionary with Python and R as keys and numbers of files as values
+        """
         count = {"Python": 0, "R": 0}
         files_info = list(filter(lambda element: element['@type'] ==
                                  ['File', 'SoftwareSourceCode'], self.ro_crate))
@@ -94,6 +142,11 @@ class Paper(Hashable):
         return count
 
     def count_csv(self):
+        """
+        Count the number of .csv files in the record
+
+        :return: the number of .csv files as integer
+        """
         count = 0
         files_info = list(filter(lambda element: element['@type'] ==
                                  ['File'], self.ro_crate))
@@ -104,7 +157,13 @@ class Paper(Hashable):
 
     @Cache(validity_duration="1d")
     def count_methods(self):
+        """
+        Count and cache the number of schemata used in the record
+
+        :return: a dictionary with abbreviated names of schemata as keys and their counts as values
+        """
         schemata_names = ["dp", "ds", "ae", "ma", "ca", "gc", "ra", "cp", "cd", "fa"]
+        # schemata ids from https://knowledgeloom.tib.eu/pages/help
         schemata_ids = ["37182ecfb4474942e255", "5b66cb584b974b186f37",
                         "5e782e67e70d0b2a022a", "c6b413ba96ba477b5dca",
                         "3f64a93eef69d721518f", "b9335ce2c99ed87735a6",
@@ -122,10 +181,21 @@ class Paper(Hashable):
         return methods_count
 
     def consistent_hash(self):
+        """
+        Hash function for the record.
+        Since records have unique folder name, we just use that.
+
+        :return: hash string
+        """
         return self.folder_name
 
 
-def find_papers():
+def find_loom_records():
+    """
+    Extract Loom records based on research articles from LDM
+
+    :return: a dictionary with folder names as keys and lists of resources(files) as values
+    """
     API_Base_URL = "https://service.tib.eu/ldmservice/api/3/action/"
     API_URL = API_Base_URL + "package_search"
     params = {"fq": "tags:reborn", "rows": 999}
@@ -135,87 +205,115 @@ def find_papers():
         print("ERROR ACCESSING API: ", API_URL, e.__str__())
     search_result = response.json().get('result')
     folders_1 = search_result["results"]
+    # select folders related to research articles
     folders_2 = [d for d in folders_1 if d.get("notes") != '']
     folders_3 = [d for d in folders_2 if d.get("notes").split()[1][:-1].startswith("https")]
-    papers = {}
+    records = {}
+    # if two folders are related to one article, merge them
     for folder in folders_3:
         folder_name = folder["title"][:-2]
-        if folder_name in papers:
-            papers[folder_name].resources += folder["resources"]
+        if folder_name in records:
+            records[folder_name].resources += folder["resources"]
         else:
-            paper = Paper()
-            paper.resources = folder["resources"]
-            # TODO MIKE
+            record = LoomRecord()
+            record.resources = folder["resources"]
             ro_resource = next(
-                (dct for dct in paper.resources if dct["name"] == "ro-crate-metadata.json"),
+                (dct for dct in record.resources if dct["name"] == "ro-crate-metadata.json"),
                 None)
-            if ro_resource is not None:
-                paper.folder_name = folder_name
-                papers[folder_name] = paper
-    return papers
+            if ro_resource is not None:  # exclude the ones without ro-crate metadata
+                record.folder_name = folder_name
+                records[folder_name] = record
+    return records
 
 
 class Summary():
-    def __init__(self, papers):
-        self.papers = papers
-        # folders/papers and their resources
+    """
+    A class for summarised information on all available Loom records based on research articles
+    """
+
+    def __init__(self, records):
+        # dictionary of loom records
+        self.records = records
         self._all_field_names = None
+        # unique names of research domains to which the records belong
         self._get_all_field_names()
-        # unique names of fields
-        self.pp_count = self.count_field_papers()
-        # number of papers per field
+        # number of articles per domain
+        self.pp_count = self.count_field_articles()
+        # number of statements per domain
         self.st_count = self.count_field_statements()
-        # number of statements per field
+        # number of authors per domain
         self.au_count = self.count_field_authors()
-        # number of authors per field
+        # number of Python and R files per domain
         self.lang_count = self.count_field_languages()
-        # number of languages (Python and R) per field
+        # number of csv files per domain
         self.csv_count = self.count_field_csv()
-        # number of csv files per field
+        # number of specific schemata per domain
         self._method_count = None
         self._get_method_count()
-        # number of methods per field
-        self.final_info = self.collect_url_info()
-        # loom record names, paper dois, methods used, data and code urls to download
+        # record names, articles dois, data urls, code urls, and schemata used; per domain
+        self.final_info = self.collect_final_info()
 
     def _get_all_field_names(self):
+        """
+        A getter method for obtaining unique domain names
+
+        :return: a set of domain names
+        """
         if self._all_field_names is None:
             all_field_set = set()
-            for paper in self.papers.values():
-                all_field_set |= paper.get_field_names()
+            for record in self.records.values():
+                all_field_set |= record.get_field_names()
             all_field_names = sorted(all_field_set)
             all_field_names.append("Overall")
             self._all_field_names = all_field_names
         return self._all_field_names
     all_field_names = property(_get_all_field_names)
 
-    def count_field_papers(self):
-        papers_dict = dict.fromkeys(self.all_field_names, 0)
-        for paper in self.papers.values():
-            field_names = paper.get_field_names()
+    def count_field_articles(self):
+        """
+        Count the number of research articles per domain
+
+        :return: a dictionary with domain names as keys
+        and research articles counts as values
+        """
+        articles_dict = dict.fromkeys(self.all_field_names, 0)
+        for record in self.records.values():
+            field_names = record.get_field_names()
             for name in field_names:
-                papers_dict[name] += 1
-        papers_dict['Overall'] = len(papers)
-        return papers_dict
+                articles_dict[name] += 1
+        articles_dict['Overall'] = len(self.records)
+        return articles_dict
 
     def count_field_statements(self):
+        """
+        Count the number of statements per domain
+
+        :return: a dictionary with domain names as keys
+        and statements counts as values
+        """
         statements_dict = dict.fromkeys(self.all_field_names, 0)
         overall_count = 0
-        for paper in self.papers.values():
-            statements_each = paper.count_statements()
+        for record in self.records.values():
+            statements_each = record.count_statements()
             overall_count += statements_each
-            field_names = paper.get_field_names()
+            field_names = record.get_field_names()
             for name in field_names:
                 statements_dict[name] += statements_each
         statements_dict['Overall'] = overall_count
         return statements_dict
 
     def count_field_authors(self):
+        """
+        Count the number of authors per domain
+
+        :return: a dictionary with domain names as keys
+        and authors counts as values
+        """
         authors_dict = {x: set() for x in self.all_field_names}
-        for paper in self.papers.values():
-            field_names = paper.get_field_names()
+        for record in self.records.values():
+            field_names = record.get_field_names()
             for name in field_names:
-                authors_dict[name] |= set(paper.get_authors())
+                authors_dict[name] |= set(record.get_authors())
         overall_set = set()
         for key, value in authors_dict.items():
             overall_set |= value
@@ -224,13 +322,19 @@ class Summary():
         return authors_dict
 
     def count_field_languages(self):
+        """
+        Count the number of files in Python and R languages per domain
+
+        :return: a dictionary with domain names as keys
+        and dictionaries with Python and R files counts as values
+        """
         languages_dict = {x: {"Python": 0, "R": 0} for x in self.all_field_names}
         overall_count = {"Python": 0, "R": 0}
-        for paper in self.papers.values():
-            languages_each = paper.count_languages()
+        for record in self.records.values():
+            languages_each = record.count_languages()
             overall_count = {lang: overall_count[lang] +
                              languages_each[lang] for lang in languages_each}
-            field_names = paper.get_field_names()
+            field_names = record.get_field_names()
             for name in field_names:
                 languages_dict[name] = {lang: languages_dict[name][lang] +
                                         languages_each[lang] for lang in languages_each}
@@ -238,64 +342,92 @@ class Summary():
         return languages_dict
 
     def count_field_csv(self):
+        """
+        Count the number of .csv files per domain
+
+        :return: a dictionary with domain names as keys
+        and .csv files counts as values
+        """
         csv_dict = dict.fromkeys(self.all_field_names, 0)
-        for paper in self.papers.values():
-            field_names = paper.get_field_names()
-            csv_each = paper.count_csv()
+        for record in self.records.values():
+            field_names = record.get_field_names()
+            csv_each = record.count_csv()
             for name in field_names:
                 csv_dict[name] += csv_each
         csv_dict['Overall'] = sum(csv_dict.values())
         return csv_dict
 
     def _get_method_count(self):
+        """
+        A getter method for the schmata count per domain
+
+        :return: a dictionary with domain names as keys
+        and dictionaries with schemata counts as values
+        """
         if self._method_count is None:
             self._method_count = self._count_field_methods()
         return self._method_count
     method_count = property(_get_method_count)
 
     def _count_field_methods(self):
-        schemata_names = ["dp", "ds", "ae", "ma", "ca", "gc", "ra", "cp", "cd", "fa"]  # line 81
+        """
+        Count the number of different schemata per domain
+
+        :return: a dictionary with domain names as keys
+        and dictionaries with schemata counts as values
+        """
+        schemata_names = ["dp", "ds", "ae", "ma", "ca", "gc", "ra", "cp", "cd", "fa"]
         methods_dict = {x: dict.fromkeys(schemata_names, 0) for x in self.all_field_names}
         overall_count = dict.fromkeys(schemata_names, 0)
-        for paper in self.papers.values():
-            methods_each = paper.count_methods()
+        for record in self.records.values():
+            methods_each = record.count_methods()
             overall_count = {meth: overall_count[meth] +
                              methods_each[meth] for meth in methods_each}
-            field_names = paper.get_field_names()
+            field_names = record.get_field_names()
             for name in field_names:
                 methods_dict[name] = {meth: methods_dict[name][meth] +
                                       methods_each[meth] for meth in methods_each}
         methods_dict['Overall'] = overall_count
         return methods_dict
 
-    def collect_url_info(self):
+    def collect_final_info(self):
+        """
+        Collect detailed information on records
+
+        :return: a dictionary with domain names as keys and lists with record information as values,
+        where a record information list includes the record name, respective article doi,
+        names and urls of related code and data files, and names of schemata used in the record
+        """
         final_dict = {x: [] for x in self.all_field_names}
-        schemata_dct = {"dp": "Data Preprocessing",
-                        "ds": "Descriptive Statistics",
-                        "ae": "Algorithm Evaluation",
-                        "ma": "Multilevel Analysis",
-                        "ca": "Correlation Analysis",
-                        "gc": "Group Comparison",
-                        "ra": "Regression Analysis",
-                        "cp": "Class Prediction",
-                        "cd": "Class Discovery",
-                        "fa": "Factor Analysis"}
-        for paper in self.papers.values():
-            methods_count = paper.count_methods()
+        schemata_dct = {
+            "dp": "Data Preprocessing",
+            "ds": "Descriptive Statistics",
+            "ae": "Algorithm Evaluation",
+            "ma": "Multilevel Analysis",
+            "ca": "Correlation Analysis",
+            "gc": "Group Comparison",
+            "ra": "Regression Analysis",
+            "cp": "Class Prediction",
+            "cd": "Class Discovery",
+            "fa": "Factor Analysis"
+        }
+        for record in self.records.values():
+            methods_count = record.count_methods()
             methods_list_abbreviated = [key for key, value in methods_count.items() if value >= 1]
             methods_list = [schemata_dct.get(name, name) for name in methods_list_abbreviated]
-            paper_info = [paper.get_record_name(),
-                          methods_list,
-                          paper.get_publication_url(),
-                          paper.get_code_url(),
-                          paper.get_data_url()]
-            field_names = paper.get_field_names()
+            record_info = [
+                record.get_record_name(),
+                record.get_publication_url(),
+                record.get_data_url(),
+                record.get_code_url(),
+                methods_list,
+            ]
+
+            field_names = record.get_field_names()
             for name in field_names:
-                final_dict[name] += [paper_info]
-        # overall is show all undiff
+                final_dict[name] += [record_info]
         return final_dict
 
 
-# with timing("get_data"):
-papers = find_papers()
-summary = Summary(papers)
+records = find_loom_records()
+summary = Summary(records)

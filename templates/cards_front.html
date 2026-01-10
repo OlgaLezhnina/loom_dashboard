@@ -11,30 +11,30 @@
       <div class="card_name">Loom Records</div>
       <div id="pp_count" class="count">
       <div class="row_name">Articles</div> 
-      {% for name, value in summary.pp_count.items() %}
+{% for name, value in summary.pp_count.items() %}
         <span id="pp_{{loop.index}}" class="num colour_{{loop.index}}">{{ value }}</span>
-      {% endfor %} 
+{% endfor %} 
       </div>
      <div id="au_count" class="count">
       <div class="row_name">Authors</div> 
-      {% for name, value in summary.au_count.items() %}
+{% for name, value in summary.au_count.items() %}
         <span id="au_{{loop.index}}" class="num colour_{{loop.index}}">{{ value }}</span>
-      {% endfor %} 
+{% endfor %} 
       </div>
        <div id="st_count" class="count">
        <div class="row_name">Statements</div> 
-       {% for name, value in summary.st_count.items() %}
+{% for name, value in summary.st_count.items() %}
          <span id="st_{{loop.index}}" class="num colour_{{loop.index}}">{{ value }}</span>
-       {% endfor %} 
+{% endfor %} 
        </div>
     </div>
     <div up-href="cards_back.html" id="data" class="card bubble" up-target="#data" up-follow>
       <div class="card_name">Data and Code</div> 
       <div id="csv_count" class="count">
       <div class="row_name">CSV data files</div>
-      {% for name, value in summary.csv_count.items() %}
+{% for name, value in summary.csv_count.items() %}
         <span id="csv_{{loop.index}}" class="num colour_{{loop.index}}">{{ value }}</span>
-      {% endfor %} 
+{% endfor %} 
       </div>
      <div id="py_count" class="count">
       <div class="row_name">Python files</div>

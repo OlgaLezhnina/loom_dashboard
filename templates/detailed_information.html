@@ -32,23 +32,23 @@
             <div class="info_line">
               <div class="record_paper">
                 {{ line[0] }}       
-      {% for doi in line[2] %}
+      {% for doi in line[1] %}
                 <a href={{ doi }} target="_blank">(article)</a>
       {% endfor %}  
               </div>         
               <div class="data_files">
                 Data:
-      {% if not line[4].items() %}
+      {% if not line[2].items() %}
                 see the article
       {% endif %} 
-      {% for key, value in line[4].items() %}
+      {% for key, value in line[2].items() %}
         {% if loop.index ==4 %}
                           <details>
                           <summary class="noselect" style="font-size:14px;">more files</summary>
         {% endif %}
                         <a href={{ value }} target="_blank">{{ key }}</a>
       {% endfor %}
-      {% if line[4].items()|length > 3 %}
+      {% if line[2].items()|length > 3 %}
                         </details>
       {% endif %} 
                     </div>
@@ -69,14 +69,14 @@
       {% endif %} 
                     </div>
                     <div class="schemata">
-      {% for schema in line[1] %}
+      {% for schema in line[4] %}
         {% if loop.index ==2 %}
                           <details>
                           <summary class="noselect" style="font-size:14px;">more schemata</summary>
         {% endif %} 
                           {{ schema }}
       {% endfor %}
-      {% if line[1]|length > 1 %}
+      {% if line[4]|length > 1 %}
                         </details>
       {% endif %}       
                     </div>          
