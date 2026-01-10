@@ -344,4 +344,7 @@ div.schemata{
   .row_name {
     width: 20ch;
   }
+  .card::after {
+    font-size: 250%;
+  }
 }
