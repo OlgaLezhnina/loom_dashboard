@@ -34,7 +34,9 @@ function selectField(index) {
 function selectColour(index) {
   var x = document.getElementsByClassName('colour_' + index);
   const colours = ["#9FD0F0","#F0B49F", "#CFA6F0", "#A0E0B0", "#F0D39F", 
-                   "#B0B4F0", "#F0A0C6", "#9FC6A0", "#C6D0F0", "#A0C0E0"]; 
+                   "#B0B4F0", "#F0A0C6", "#9FC6A0", "#C6D0F0", "#A0C0E0",
+                   "#BBDEF4", "#F4CABB", "#DDC0F4", "#BCE9C7", "#F4E0BB",
+                    "#C7CAF4", "#F4BCD7", "#BBD7BC", "#D7DEF4", "#BCD2E9"]; 
   for (let element of x) {
     element.style.background = colours[(index-1)%colours.length];
   }

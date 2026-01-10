@@ -13,19 +13,19 @@ def main():
     return render_template('main_page.html', mimetype='text/html', summary=summary)
 
 
-@app.route("/front.html")
-def front():
-    return render_template('front.html', mimetype='text/html')
+@app.route("/cards_front.html")
+def cards_front():
+    return render_template('cards_front.html', mimetype='text/html', summary=summary)
 
 
-@app.route("/back.html")
-def back():
-    return render_template('back.html', mimetype='text/html', summary=summary)
+@app.route("/cards_back.html")
+def cards_back():
+    return render_template('cards_back.html', mimetype='text/html')
 
 
-@app.route("/final_info.html")
-def final_info():
-    return render_template('final_info.html', mimetype='text/html', summary=summary)
+@app.route("/detailed_information.html")
+def detailed_information():
+    return render_template('detailed_information.html', mimetype='text/html', summary=summary)
 
 
 if __name__ == "__main__":
