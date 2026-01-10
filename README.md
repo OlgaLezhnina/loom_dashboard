@@ -8,8 +8,8 @@ The dashboard is an interactive presentation of information provided by the
 [TIB Knowledge Loom](https://knowledgeloom.tib.eu/pages/about).
 It runs on [Flask](https://flask.palletsprojects.com/en/stable/) and uses 
 the [unpoly](https://unpoly.com/) framework for enhancing HTML.
-We used the [Intertwined](https://github.com/nst/Intertwined ) library and the
-[Barlow](https://www.1001fonts.com/barlow-font.html) font for aesthetics.
+We used the [Intertwined](https://github.com/nst/Intertwined ) library for the background image
+and [Barlow](https://www.1001fonts.com/barlow-font.html) font for title.
  
 
 ## Running locally
