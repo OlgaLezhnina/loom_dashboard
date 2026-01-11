@@ -19,24 +19,24 @@
           <a href="main_page.html" up-target="#overview">Back to Overview</a>
         </p>
       </div>
-{%- set papers_cutoff = 2 %}
-{#- hide records after the first one into an expandable menu #}
-{%- set data_files_cutoff = 4 %}
-{#- hide attached csv files after 3rd one #}
-{%- set code_files_cutoff = 4 %}
-{#- hide attached code files after 3rd one #}
+
+{#- variables controlling when to hide extra content #}
+{#- if there are more than 1 records, then hide the rest under `more records` #}
+{#- if there are more than 4 data/code files, #}
+{#- then show only first two, and hide files from 3rd onwards under `more files` #}
+{#- if there are more than 3 domain fields, #}
+{#- then show only first two, and hide from 3rd onwards under `more schemata` #}
+{%- set papers_max = 1 %}
+{%- set files_cutoff = 2 %}
+{%- set files_max = 4 %}
 {%- set schemata_cutoff = 2 %}
-{#- hide used schemata after the 1st one #}
+{%- set schemata_max = 3 %}
 {%- for name in summary.all_field_names %}
   {%- if name != "Overall" %}
       <div id="fin_{{loop.index}}" class="field_wrap">
         <div class="legend colour_{{loop.index}}">{{ name }}</div>
         <div class="info_field">
     {%- for line in summary.final_info[name] %}
-      {%- if loop.index == papers_cutoff %}
-          <details>
-            <summary class="noselect" style="font-size:14px;">more records</summary>
-      {%- endif %}
             <div class="info_line">
               <div class="record_paper">
                 {{ line[0] }}
@@ -44,53 +44,69 @@
                 <a href={{ doi }} target="_blank">(article)</a>
       {%- endfor %}
               </div>
-              <div class="data_files">
-                Data:
+              <div class="file_listing">
+                <div>
+                  Data:
       {%- if line[2]|length == 0 %}
-                see the article
+                  see the article
       {%- endif %}
+                </div>
       {%- for key, value in line[2].items() %}
-        {%- if loop.index == data_files_cutoff %}
-                <details>
-                  <summary class="noselect" style="font-size:14px;">more files</summary>
-        {%- endif %}
                   <a href={{ value }} target="_blank">{{ key }}</a>
-        {%- if loop.index == line[2]|length and  loop.index >= data_files_cutoff %}
+        {%- if line[2]|length > files_max %}
+          {%- if loop.index == files_cutoff %}
+                <details>
+                  <summary class="noselect">more files</summary>
+          {%- endif %}
+          {%- if loop.index == line[2]|length %}
                 </details>
+          {%- endif %}
         {%- endif %}
       {%- endfor %}
               </div>
-              <div class="code_files">
-                Code:
+              <div class="file_listing">
+                <div>
+                  Code: 
       {%- if line[3]|length == 0 %}
-                see the article
+                  see the article
       {%- endif %}
+                </div>
       {%- for key, value in line[3].items() %}
-        {%- if loop.index == code_files_cutoff %}
-                <details>
-                  <summary class="noselect" style="font-size:14px;">more files</summary>
-        {%- endif %}
                   <a href={{ value }} target="_blank">{{ key }}</a>
-        {%- if loop.index == line[3]|length and loop.index >= code_files_cutoff %}
+        {%- if line[3]|length > files_max %}
+          {%- if loop.index == files_cutoff %}
+                <details>
+                  <summary class="noselect">more files</summary>
+          {%- endif %}
+          {%- if loop.index == line[3]|length %}
                 </details>
+          {%- endif %}
         {%- endif %}
       {%- endfor %}
               </div>
               <div class="schemata">
       {%- for schema in line[4] %}
-        {%- if loop.index == schemata_cutoff %}
+                <div> {{ schema }} </div>
+        {%- if line[4]|length > schemata_max %}
+          {%- if loop.index == schemata_cutoff %}
                 <details>
-                  <summary class="noselect" style="font-size:14px;">more schemata</summary>
-        {%- endif %}
-                    {{ schema }}
-        {%- if loop.index == line[4]|length and loop.index >= schemata_cutoff %}
+                  <summary class="noselect">more schemata</summary>
+          {%- endif %}
+          {%- if loop.index == line[4]|length %}
                 </details>
+          {%- endif %}
         {%- endif %}
       {%- endfor %}
               </div>
             </div>
-      {%- if loop.index == summary.final_info[name]|length and loop.index >= papers_cutoff %}
+      {%- if summary.final_info[name]|length > papers_max %}
+        {%- if loop.index == papers_max %}
+          <details>
+            <summary class="noselect">more records</summary>
+        {%- endif %}
+        {%- if loop.index == summary.final_info[name]|length %}
           </details>
+        {%- endif %}
       {%- endif %}
     {%- endfor %}
         </div>
