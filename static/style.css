@@ -322,6 +322,7 @@ body::before {
 
 .file_listing{
   width: 15%;
+  min-width: 15%;
   margin: 5px;
   display: flex;
   flex-flow: row wrap;
@@ -343,6 +344,7 @@ body::before {
 
 .schemata{
   width: 15%;
+  min-width: 15%;
   margin: 5px;
   display: flex;
   flex-flow: column nowrap;
