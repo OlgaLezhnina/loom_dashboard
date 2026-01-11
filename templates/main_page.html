@@ -14,9 +14,11 @@
         <img src="static/title.png" style="width:auto;height:70px;">
       </div>
       <div id="fields" class="centered bubble">
-{% from 'field_button.html' import field_name %}
 {% for name in summary.all_field_names %}
-        {{ field_name(name, loop.index) }}
+        <label class="slider colour_{{ loop.index }}">
+          <input type="checkbox" id="field_name_{{ loop.index }}" onclick="selectField({{ loop.index }})" checked>
+          {{ name }}
+        </label>
 {% endfor %}
       </div>
       <div id="overview" class="display-contents">
