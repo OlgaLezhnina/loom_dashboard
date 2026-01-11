@@ -350,6 +350,7 @@ body::before {
   flex-flow: column nowrap;
   align-content: flex-start;
   gap: 0px;
+  margin-right:10px;
 }
 
 /* Use media query and show the flex items vertically if screen width is less than 120 characters */
