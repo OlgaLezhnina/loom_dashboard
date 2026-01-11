@@ -22,15 +22,15 @@
 
 {#- variables controlling when to hide extra content #}
 {#- if there are more than 1 records, then hide the rest under `more records` #}
-{#- if there are more than 4 data/code files, #}
-{#- then show only first two, and hide files from 3rd onwards under `more files` #}
-{#- if there are more than 3 domain fields, #}
-{#- then show only first two, and hide from 3rd onwards under `more schemata` #}
+{#- if there are more than 1 data/code files, #}
+{#- then show only first 1, and hide files from 2 onwards under `more files` #}
+{#- if there are more than 1 domain fields, #}
+{#- then show only first 1, and hide from 2 onwards under `more schemata` #}
 {%- set papers_max = 1 %}
-{%- set files_cutoff = 2 %}
-{%- set files_max = 4 %}
-{%- set schemata_cutoff = 2 %}
-{%- set schemata_max = 3 %}
+{%- set files_cutoff = 1 %}
+{%- set files_max = 1 %}
+{%- set schemata_cutoff = 1 %}
+{%- set schemata_max = 1 %}
 {%- for name in summary.all_field_names %}
   {%- if name != "Overall" %}
       <div id="fin_{{loop.index}}" class="field_wrap">

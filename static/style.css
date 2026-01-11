@@ -336,11 +336,11 @@ body::before {
 }
 
 .file_listing > div:first-child {
-  width: 90%;
+  width: 98%;
 }
 
 .file_listing a {
-  width: 40%; /* ensures at most 2 code references per line */ 
+  width: 98%; /* ensures at most 1 code references per line */ 
 }
 
 .file_listing summary {
