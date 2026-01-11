@@ -209,9 +209,9 @@ def find_loom_records():
     folders_2 = [d for d in folders_1 if d.get("notes") != '']
     folders_3 = [d for d in folders_2 if d.get("notes").split()[1][:-1].startswith("https")]
     records = {}
-    # if two folders are related to one article, merge them
     for folder in folders_3:
         folder_name = folder["title"][:-2]
+        # if two folders are related to one article, merge them:
         if folder_name in records:
             records[folder_name].resources += folder["resources"]
         else:
@@ -234,8 +234,8 @@ class Summary():
     def __init__(self, records):
         # dictionary of loom records
         self.records = records
-        self._all_field_names = None
         # unique names of research domains to which the records belong
+        self._all_field_names = None
         self._get_all_field_names()
         # number of articles per domain
         self.pp_count = self.count_field_articles()

@@ -266,7 +266,7 @@ body::before {
 .legend is the title of the domain
 .info_field is the v-box with records
 .info_line is the singular record (h-box)
-.record_paper is the div for the record name
+.record_paper is the div for the record name and research article doi 
 .file_listing is the div for csv files, then again for code files
 .code_files is for code files
 .schemata is for the used methods

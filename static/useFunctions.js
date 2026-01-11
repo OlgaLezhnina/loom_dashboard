@@ -45,7 +45,7 @@ function selectField(index) {
 
 /**
  * Set a colour for elements of the colour_{index} class
- * @param  {Number} index The index for the colours
+ * @param  {Number} index The index for the colours and coloured elements
  */
 function selectColour(index) {
   var x = document.getElementsByClassName('colour_' + index);
