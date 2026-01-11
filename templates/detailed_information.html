@@ -19,14 +19,21 @@
           <a href="main_page.html" up-target="#overview">Back to Overview</a>
         </p>
       </div>
+{%- set papers_cutoff = 2 %}
+{#- hide records after the first one into an expandable menu #}
+{%- set data_files_cutoff = 4 %}
+{#- hide attached csv files after 3rd one #}
+{%- set code_files_cutoff = 4 %}
+{#- hide attached code files after 3rd one #}
+{%- set schemata_cutoff = 2 %}
+{#- hide used schemata after the 1st one #}
 {%- for name in summary.all_field_names %}
   {%- if name != "Overall" %}
       <div id="fin_{{loop.index}}" class="field_wrap">
         <div class="legend colour_{{loop.index}}">{{ name }}</div>
         <div class="info_field">
     {%- for line in summary.final_info[name] %}
-      {#- hide records after the first one into an expandable menu #}
-      {%- if loop.index == 2 %}
+      {%- if loop.index == papers_cutoff %}
           <details>
             <summary class="noselect" style="font-size:14px;">more records</summary>
       {%- endif %}
@@ -39,51 +46,50 @@
               </div>
               <div class="data_files">
                 Data:
-      {%- if not line[2].items() %}
+      {%- if line[2]|length == 0 %}
                 see the article
       {%- endif %}
       {%- for key, value in line[2].items() %}
-        {#- hide attached files after 3rd one into an expandable menu #}
-        {%- if loop.index == 4 %}
+        {%- if loop.index == data_files_cutoff %}
                 <details>
                   <summary class="noselect" style="font-size:14px;">more files</summary>
         {%- endif %}
                   <a href={{ value }} target="_blank">{{ key }}</a>
-        {%- if loop.index == line[2].items()|length and  loop.index >= 4 %}
+        {%- if loop.index == line[2]|length and  loop.index >= data_files_cutoff %}
                 </details>
         {%- endif %}
       {%- endfor %}
               </div>
               <div class="code_files">
                 Code:
-      {%- if not line[3].items() %}
+      {%- if line[3]|length == 0 %}
                 see the article
       {%- endif %}
       {%- for key, value in line[3].items() %}
-        {%- if loop.index == 4 %}
+        {%- if loop.index == code_files_cutoff %}
                 <details>
                   <summary class="noselect" style="font-size:14px;">more files</summary>
         {%- endif %}
                   <a href={{ value }} target="_blank">{{ key }}</a>
-        {%- if loop.index == line[3].items()|length and loop.index >= 4 %}
+        {%- if loop.index == line[3]|length and loop.index >= code_files_cutoff %}
                 </details>
         {%- endif %}
       {%- endfor %}
               </div>
               <div class="schemata">
       {%- for schema in line[4] %}
-        {%- if loop.index == 2 %}
+        {%- if loop.index == schemata_cutoff %}
                 <details>
                   <summary class="noselect" style="font-size:14px;">more schemata</summary>
         {%- endif %}
                     {{ schema }}
-        {%- if loop.index == line[4]|length and loop.index >= 2 %}
+        {%- if loop.index == line[4]|length and loop.index >= schemata_cutoff %}
                 </details>
         {%- endif %}
       {%- endfor %}
               </div>
             </div>
-      {%- if loop.index == summary.final_info[name]|length and loop.index >= 2 %}
+      {%- if loop.index == summary.final_info[name]|length and loop.index >= papers_cutoff %}
           </details>
       {%- endif %}
     {%- endfor %}
