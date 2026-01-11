@@ -4,11 +4,6 @@
     sans-serif;
 }
 
-@font-face {
-  font-family: Barlow ExtraBold;
-  src: url(/static/barlow.extrabold.ttf);
-}
-
 #logo {
     position: relative;
 	margin-top: 15px;
