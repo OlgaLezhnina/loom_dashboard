@@ -11,15 +11,15 @@
   <body>
     <div class="v-box">
       <div id="logo" class="centered">
-        <img src="static/title.png" style="width:auto;height:70px;">
+        <img src="static/title.png">
       </div>
       <div id="fields" class="centered bubble">
-{% for name in summary.all_field_names %}
+{%- for name in summary.all_field_names %}
         <label class="slider colour_{{ loop.index }}">
           <input type="checkbox" id="field_name_{{ loop.index }}" onclick="selectField({{ loop.index }})" checked>
           {{ name }}
         </label>
-{% endfor %}
+{%- endfor %}
       </div>
       <div id="overview" class="display-contents">
         <div id="explanation" class="centered bubble">

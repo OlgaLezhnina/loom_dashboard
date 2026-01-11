@@ -19,76 +19,78 @@
           <a href="main_page.html" up-target="#overview">Back to Overview</a>
         </p>
       </div>
-{% for name in summary.all_field_names %}
-  {% if name != "Overall" %}
+{%- for name in summary.all_field_names %}
+  {%- if name != "Overall" %}
       <div id="fin_{{loop.index}}" class="field_wrap">
         <div class="legend colour_{{loop.index}}">{{ name }}</div>
         <div class="info_field">
-    {% for line in summary.final_info[name] %}
-      {% if loop.index == 2 %}
+    {%- for line in summary.final_info[name] %}
+      {#- hide records after the first one into an expandable menu #}
+      {%- if loop.index == 2 %}
           <details>
             <summary class="noselect" style="font-size:14px;">more records</summary>
-      {% endif %}
+      {%- endif %}
             <div class="info_line">
               <div class="record_paper">
                 {{ line[0] }}
-      {% for doi in line[1] %}
+      {%- for doi in line[1] %}
                 <a href={{ doi }} target="_blank">(article)</a>
-      {% endfor %}
+      {%- endfor %}
               </div>
               <div class="data_files">
                 Data:
-      {% if not line[2].items() %}
+      {%- if not line[2].items() %}
                 see the article
-      {% endif %}
-      {% for key, value in line[2].items() %}
-        {% if loop.index ==4 %}
-                          <details>
-                          <summary class="noselect" style="font-size:14px;">more files</summary>
-        {% endif %}
-                        <a href={{ value }} target="_blank">{{ key }}</a>
-      {% endfor %}
-      {% if line[2].items()|length > 3 %}
-                        </details>
-      {% endif %}
-                    </div>
-                    <div class="code_files">
-                      Code:
-      {% if not line[3].items() %}
-                        see the article
-      {% endif %}
-      {% for key, value in line[3].items() %}
-        {% if loop.index ==4 %}
-                          <details>
-                          <summary class="noselect" style="font-size:14px;">more files</summary>
-        {% endif %}
-                        <a href={{ value }} target="_blank">{{ key }}</a>
-      {% endfor %}
-      {% if line[3].items()|length > 3 %}
-                        </details>
-      {% endif %}
-                    </div>
-                    <div class="schemata">
-      {% for schema in line[4] %}
-        {% if loop.index ==2 %}
-                          <details>
-                          <summary class="noselect" style="font-size:14px;">more schemata</summary>
-        {% endif %}
-                          {{ schema }}
-      {% endfor %}
-      {% if line[4]|length > 1 %}
-                        </details>
-      {% endif %}
-                    </div>
-                  </div>
-    {% endfor %}
-    {% if summary.final_info[name]|length > 1 %}
-                    </details>
-    {% endif %}
-                </div>
+      {%- endif %}
+      {%- for key, value in line[2].items() %}
+        {#- hide attached files after 3rd one into an expandable menu #}
+        {%- if loop.index == 4 %}
+                <details>
+                  <summary class="noselect" style="font-size:14px;">more files</summary>
+        {%- endif %}
+                  <a href={{ value }} target="_blank">{{ key }}</a>
+        {%- if loop.index == line[2].items()|length and  loop.index >= 4 %}
+                </details>
+        {%- endif %}
+      {%- endfor %}
               </div>
-  {% endif %}
-{% endfor %}
+              <div class="code_files">
+                Code:
+      {%- if not line[3].items() %}
+                see the article
+      {%- endif %}
+      {%- for key, value in line[3].items() %}
+        {%- if loop.index == 4 %}
+                <details>
+                  <summary class="noselect" style="font-size:14px;">more files</summary>
+        {%- endif %}
+                  <a href={{ value }} target="_blank">{{ key }}</a>
+        {%- if loop.index == line[3].items()|length and loop.index >= 4 %}
+                </details>
+        {%- endif %}
+      {%- endfor %}
+              </div>
+              <div class="schemata">
+      {%- for schema in line[4] %}
+        {%- if loop.index == 2 %}
+                <details>
+                  <summary class="noselect" style="font-size:14px;">more schemata</summary>
+        {%- endif %}
+                    {{ schema }}
+        {%- if loop.index == line[4]|length and loop.index >= 2 %}
+                </details>
+        {%- endif %}
+      {%- endfor %}
+              </div>
+            </div>
+      {%- if loop.index == summary.final_info[name]|length and loop.index >= 2 %}
+          </details>
+      {%- endif %}
+    {%- endfor %}
+        </div>
+      </div>
+  {%- endif %}
+{%- endfor %}
     </div>
   </body>
 </html>

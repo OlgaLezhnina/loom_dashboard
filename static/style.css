@@ -10,6 +10,11 @@
 	margin-bottom: 15px;
 }
 
+#logo > img {
+  width: 624px;
+  height: auto;
+}
+
 #logo::before {
 	content: "";
 	width: 100%;
