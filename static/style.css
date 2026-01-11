@@ -131,7 +131,7 @@ body::before {
   text-align: center;
   font-size: 20px;
   font-weight: bold;
-  padding: 8px; 
+  padding: 8px;
 }
 
 .count {
@@ -167,16 +167,12 @@ body::before {
   border-radius: 1ch;
 }
 
-/*==============================================================================*/
-/*=== continue from here! ======================================================*/
-/*==============================================================================*/
-
 #fields {
   position: sticky;
   top: 0px;
   z-index:10;
   margin-bottom: 10px;
-  padding: 10px;
+  padding-left: 10px;
   display:flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -186,7 +182,7 @@ body::before {
 }
 
 /* sliders are labels with invisible checkbox inside,
-   we use ::before and ::after to animate the slider 
+   we use ::before and ::after to animate the slider
    plus the background bit under the slider */
 
 .slider > input {
@@ -252,29 +248,29 @@ body::before {
 
 /* end of slider related code */
 
-#contacts {
-  text-align: center;
-}
+/*==============================================================================*/
+/*=== continue from here! ======================================================*/
+/*==============================================================================*/
 
-div.legend{
+.legend{
   font-size: 18px;
   border-radius: 10px;
   padding: 5px;
   margin: 3px;
-} 
+}
 
 div.field_wrap{
   display:inline-flex;
   text-align: left;
   width: 90vw;
   flex-direction: column;
-  background-color: #E3E5E6; 
+  background-color: #E3E5E6;
   margin-bottom: 15px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 10px;
-  box-shadow: 5px 5px 15px #5a5b63; 
-} 
+  box-shadow: 5px 5px 15px #5a5b63;
+}
 
 #more {display: none;}
 

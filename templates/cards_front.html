@@ -7,109 +7,109 @@
   </head>
   <body>
     <!-- HTML here may use Unpoly attributes like [up-follow] -->
-    <div up-href="cards_back.html" id="records" class="card bubble" up-target="#records" up-follow>  
+    <div up-href="cards_back.html" id="records" class="card bubble" up-target="#records" up-follow>
       <div class="card_name">Loom Records</div>
       <div id="pp_count" class="count">
-      <div class="row_name">Articles</div> 
+      <div class="row_name">Articles</div>
 {% for name, value in summary.pp_count.items() %}
         <span id="pp_{{loop.index}}" class="num colour_{{loop.index}}">{{ value }}</span>
-{% endfor %} 
+{% endfor %}
       </div>
      <div id="au_count" class="count">
-      <div class="row_name">Authors</div> 
+      <div class="row_name">Authors</div>
 {% for name, value in summary.au_count.items() %}
         <span id="au_{{loop.index}}" class="num colour_{{loop.index}}">{{ value }}</span>
-{% endfor %} 
+{% endfor %}
       </div>
        <div id="st_count" class="count">
-       <div class="row_name">Statements</div> 
+       <div class="row_name">Statements</div>
 {% for name, value in summary.st_count.items() %}
          <span id="st_{{loop.index}}" class="num colour_{{loop.index}}">{{ value }}</span>
-{% endfor %} 
+{% endfor %}
        </div>
     </div>
     <div up-href="cards_back.html" id="data" class="card bubble" up-target="#data" up-follow>
-      <div class="card_name">Data and Code</div> 
+      <div class="card_name">Data and Code</div>
       <div id="csv_count" class="count">
       <div class="row_name">CSV data files</div>
 {% for name, value in summary.csv_count.items() %}
         <span id="csv_{{loop.index}}" class="num colour_{{loop.index}}">{{ value }}</span>
-{% endfor %} 
+{% endfor %}
       </div>
      <div id="py_count" class="count">
       <div class="row_name">Python files</div>
-      {% for name, value in summary.lang_count.items() %}
+{% for name, value in summary.lang_count.items() %}
         <span id="py_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["Python"] }}</span>
-      {% endfor %} 
+{% endfor %}
       </div>
       <div id="r_count" class="count">
       <div class="row_name">R files</div>
-      {% for name, value in summary.lang_count.items() %}
+{% for name, value in summary.lang_count.items() %}
         <span id="r_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["R"] }}</span>
-      {% endfor %} 
+{% endfor %}
       </div>
     </div>
-    <div up-href="cards_back.html" id="methods" class="card bubble" up-target="#methods" up-follow> 
+    <div up-href="cards_back.html" id="methods" class="card bubble" up-target="#methods" up-follow>
       <div class="card_name">Schemata</div>
       <div id="dp_count" class="count">
       <div class="sch_name">Data Preprocessing</div>
-      {% for name, value in summary.method_count.items() %}
+{% for name, value in summary.method_count.items() %}
         <span id="dp_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["dp"] }}</span>
-      {% endfor %} 
+{% endfor %}
       </div>
       <div id="ds_count" class="count">
       <div class="sch_name">Descriptive Statistics</div>
-      {% for name, value in summary.method_count.items() %}
+{% for name, value in summary.method_count.items() %}
         <span id="ds_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["ds"] }}</span>
-      {% endfor %} 
+{% endfor %}
       </div>
       <div id="ae_count" class="count">
       <div class="sch_name">Algorithm Evaluation</div>
-      {% for name, value in summary.method_count.items() %}
+{% for name, value in summary.method_count.items() %}
         <span id="ae_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["ae"] }}</span>
-      {% endfor %} 
+{% endfor %}
       </div>
       <div id="ma_count" class="count">
       <div class="sch_name">Multilevel Analysis</div>
-      {% for name, value in summary.method_count.items() %}
+{% for name, value in summary.method_count.items() %}
         <span id="ma_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["ma"] }}</span>
-      {% endfor %} 
+{% endfor %}
       </div>
       <div id="ca_count" class="count">
       <div class="sch_name">Correlation Analysis</div>
-      {% for name, value in summary.method_count.items() %}
+{% for name, value in summary.method_count.items() %}
         <span id="ca_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["ca"] }}</span>
-      {% endfor %} 
-      </div>      
+{% endfor %}
+      </div>
       <div id="gc_count" class="count">
       <div class="sch_name">Group Comparison</div>
-      {% for name, value in summary.method_count.items() %}
+{% for name, value in summary.method_count.items() %}
         <span id="gc_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["gc"] }}</span>
-      {% endfor %} 
+{% endfor %}
       </div>
       <div id="ra_count" class="count">
       <div class="sch_name">Regression Analysis</div>
-      {% for name, value in summary.method_count.items() %}
+{% for name, value in summary.method_count.items() %}
         <span id="ra_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["ra"] }}</span>
-      {% endfor %} 
+{% endfor %}
       </div>
       <div id="cp_count" class="count">
       <div class="sch_name">Class Prediction</div>
-      {% for name, value in summary.method_count.items() %}
+{% for name, value in summary.method_count.items() %}
         <span id="cp_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["cp"] }}</span>
-      {% endfor %} 
+{% endfor %}
       </div>
       <div id="cd_count" class="count">
       <div class="sch_name">Class Discovery</div>
-      {% for name, value in summary.method_count.items() %}
+{% for name, value in summary.method_count.items() %}
         <span id="cd_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["cd"] }}</span>
-      {% endfor %} 
+{% endfor %}
       </div>
       <div id="fa_count" class="count">
       <div class="sch_name">Factor Analysis</div>
-      {% for name, value in summary.method_count.items() %}
+{% for name, value in summary.method_count.items() %}
         <span id="fa_{{loop.index}}" class="num colour_{{loop.index}}">{{ value["fa"] }}</span>
-      {% endfor %} 
+{% endfor %}
       </div>
     </div>
   </body>

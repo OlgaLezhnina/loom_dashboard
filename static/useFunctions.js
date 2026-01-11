@@ -1,5 +1,5 @@
 /**
- * Check the states of all buttons, show/hide elements, and re-colour domain-related entries 
+ * Check the states of all buttons, show/hide elements, and re-colour domain-related entries
    when unpoly adds a fragment with one of these ids
  */
 up.compiler('#records, #data, #methods, #overview', function(element, data, meta) {
@@ -17,7 +17,7 @@ function checkButtons() {
     var button = document.getElementById("field_name_" + counter);
     if (!button) break;
     selectField(counter);
-    counter++; 
+    counter++;
   }
 }
 
@@ -41,7 +41,7 @@ function selectField(index) {
         x.style.display = "none";
       }
   }
-} 
+}
 
 /**
  * Set a colour for elements of the colour_{index} class
@@ -49,10 +49,10 @@ function selectField(index) {
  */
 function selectColour(index) {
   var x = document.getElementsByClassName('colour_' + index);
-  const colours = ["#9FD0F0","#F0B49F", "#CFA6F0", "#A0E0B0", "#F0D39F", 
+  const colours = ["#9FD0F0","#F0B49F", "#CFA6F0", "#A0E0B0", "#F0D39F",
                    "#B0B4F0", "#F0A0C6", "#9FC6A0", "#C6D0F0", "#A0C0E0",
                    "#BBDEF4", "#F4CABB", "#DDC0F4", "#BCE9C7", "#F4E0BB",
-                    "#C7CAF4", "#F4BCD7", "#BBD7BC", "#D7DEF4", "#BCD2E9"]; 
+                    "#C7CAF4", "#F4BCD7", "#BBD7BC", "#D7DEF4", "#BCD2E9"];
   for (let element of x) {
     element.style.background = colours[(index-1)%colours.length];
   }
@@ -68,7 +68,7 @@ function assignColours() {
     var button = document.getElementById("field_name_" + counter);
     if (!button) break;
     selectColour(counter);
-    counter++; 
+    counter++;
   }
   // hardcode the grey colour for 'Overall', which is the last field_button
   var index = counter - 1;
@@ -76,5 +76,5 @@ function assignColours() {
   for (let element of x) {
     element.style.background = "#B0B0B8";
   }
-} 
+}
 
