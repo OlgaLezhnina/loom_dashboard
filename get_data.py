@@ -349,12 +349,14 @@ class Summary():
         and .csv files counts as values
         """
         csv_dict = dict.fromkeys(self.all_field_names, 0)
+        overall_count = 0
         for record in self.records.values():
             field_names = record.get_field_names()
             csv_each = record.count_csv()
+            overall_count += csv_each
             for name in field_names:
                 csv_dict[name] += csv_each
-        csv_dict['Overall'] = sum(csv_dict.values())
+        csv_dict['Overall'] = overall_count
         return csv_dict
 
     def _get_method_count(self):
